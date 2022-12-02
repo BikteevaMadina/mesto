@@ -432,6 +432,7 @@
 }
 }
 
+
 .popup {
   display: none;
   justify-content: center;
@@ -446,10 +447,10 @@
   background-color: rgba(0,0,0,.5);
 }
 
+
 .popup_opened {
   display: flex;
 }
-
 
 
 .popup__container {
@@ -556,6 +557,7 @@
   font-size: 18px;
   line-height: 22px;
   padding: 0 0 45px;
+  text-align: center;
 }
 }
 
@@ -606,6 +608,11 @@
   padding: 0;
   cursor: pointer;
   box-sizing: border-box;
+  transition: opacity .3s ease;
+}
+
+.popup__submit:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 489px) {
