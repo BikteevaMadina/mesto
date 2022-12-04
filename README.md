@@ -19,5 +19,5 @@ Alt-H1
 4. <Form> для редактирования профиля.
 5. JavaSkript для реализации открытия и закрытия POPUP.
 ## **Ссылка на проект в GitHub Pages**
-* [Mesto.Russia](https://bikteevamadina.github.io/russian-travel/)
+* [Mesto.Russia](https://bikteevamadina.github.io/mesto/)
 
