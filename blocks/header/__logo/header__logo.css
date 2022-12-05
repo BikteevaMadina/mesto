@@ -1,4 +1,4 @@
-.logo {
+.header__logo {
   max-width: 142px;
   min-height: 33px;
   margin: 0;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (max-width: 489px) {
-  .logo {
+  .header__logo {
     max-width: 104px;
     min-height: 25px;
     margin-left: 27px;
