@@ -3,6 +3,10 @@
   min-height: 33px;
   margin: 0;
   display: block;
+  background-image: url(../../../pictures/logo.svg);
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 @media screen and (max-width: 489px) {

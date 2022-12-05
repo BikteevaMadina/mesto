@@ -24,16 +24,14 @@ function closePopup() {
 // Находим форму в DOM
 let formElement = document.querySelector('.popup__form');
 // Находим поля формы в DOM
-let nameInput = document.querySelector('.popup__input_name');
-let jobInput = document.querySelector('.popup__input_activity');
+let nameInput = document.querySelector('.popup__input_post_name');
+let jobInput = document.querySelector('.popup__input_post_activity');
 
 // Обработчик «отправки» формы
 
 function handleFormSubmit (evt) {
     evt.preventDefault();
 
-    nameInput.setAttribute('value', 'Жак-Ив Кусто');
-    jobInput.setAttribute('value', 'Исследователь океана');
 
     profileName.textContent = nameInput.value;
     profileDiscription.textContent = jobInput.value;
