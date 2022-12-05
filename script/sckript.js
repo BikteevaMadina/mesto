@@ -1,12 +1,12 @@
-const headerButton = document.querySelector('.profile__button_edit');
+const headerButton = document.querySelector('.profile__button-edit');
 const popup = document.querySelector('.popup');
-const popupClose = document.querySelector('.popup__button_close');
+const popupClose = document.querySelector('.popup__button-close');
 
 headerButton.addEventListener('click', openPopup);
 popupClose.addEventListener('click', closePopup);
 
 
-let profileName = document.querySelector('.profile__user_name');
+let profileName = document.querySelector('.profile__user');
 let profileDiscription = document.querySelector('.profile__discription');
 
 
