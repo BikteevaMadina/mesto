@@ -17,63 +17,38 @@
             <div class="profile__info">
                 <div class="profile__name">
                   <h1 class="profile__user">Жак&#8209;Ив&nbsp;Кусто</h1>
-                  <button class="profile__button-edit" type="button"></button>
+                  <button class="profile__button-edit" type="button" title="Редактирвание"></button>
                 </div>
                 <p class="profile__discription">Исследователь океана</p>
             </div>
-            <button class="profile__button-add" type="button"></button>
+            <button class="profile__button-add" type="button" title="Новый пост"></button>
         </section>
         <section class="elements">
             <ul class="elements__list">
-                <li class="elements__element">
-                    <img class="elements__image" src="./pictures/karachaevsk.jpg" alt="Фотография Карачаевск">
-                    <div class="elements__discription">
-                        <h2 class="elements__title">Карачаевск</h2>
-                        <button class="elements__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__element">
-                    <img class="elements__image" src="./pictures/elbrus.jpg" alt="Фотография горы Эльбрус вдали">
-                    <div class="elements__discription">
-                        <h2 class="elements__title">Гора Эльбрус</h2>
-                        <button class="elements__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__element">
-                    <img class="elements__image" src="./pictures/dombay.jpg" alt="Фотография Домбай">
-                    <div class="elements__discription">
-                        <h2 class="elements__title">Домбай</h2>
-                        <button class="elements__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__element">
-                    <img class="elements__image" src="./pictures/elbrus.jpg" alt="Фотография горы Эльбрус вдали">
-                    <div class="elements__discription">
-                        <h2 class="elements__title">Гора Эльбрус</h2>
-                        <button class="elements__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__element">
-                    <img class="elements__image" src="./pictures/dombay.jpg" alt="Фотография Домбай">
-                    <div class="elements__discription">
-                        <h2 class="elements__title">Домбай</h2>
-                        <button class="elements__like" type="button"></button>
-                    </div>
-                </li>
-                <li class="elements__element">
-                    <img class="elements__image" src="./pictures/karachaevsk.jpg" alt="Фотография Карачаевск">
-                    <div class="elements__discription">
-                        <h2 class="elements__title">Карачаево-Черкессия</h2>
-                        <button class="elements__like" type="button"></button>
-                    </div>
-                </li>
+
             </ul>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__paragraph">© 2022 Mesto Russia</p>
     </footer>
-    <section class="popup">
+
+    <!-- Template-элемент -->
+
+<template id="elements-template">
+    <li class="elements__element">
+      <img class="elements__image" src=" " alt=" ">
+      <div class="elements__discription">
+          <h2 class="elements__title"></h2>
+          <button class="elements__like" type="button" title="Нравится"></button>
+      </div>
+      <button class="elements__delete" type="button" title="Удалить"></button>
+  </li>
+</template>
+
+<!-- редактирование профиля -->
+
+    <section class="popup popup__profile-edit">
         <div class="popup__container">
             <button class="popup__button-close" type="button"></button>
             <form class="popup__form" action="#" method="post" name="profole-edit">
@@ -88,6 +63,44 @@
             </form>
         </div>
     </section>
+
+<!-- добавление новой карточки -->
+
+    <section class="popup popup__card-add">
+      <div class="popup__container">
+        <button class="popup__button-close" type="button"></button>
+        <form class="popup__form" id="form-add-cards">
+          <h3 class="popup__title">Новый пост</h3>
+          <label class="popup__label">
+            <input class="popup__input popup__input_post_name name" id="cards-name"
+            type="text"
+            placeholder="Название">
+          </label>
+          <label class="popup__label">
+            <input class="popup__input popup__input_post_activity link"
+                   type="url" id="link"
+                  placeholder="Ссылка на картинку" >
+          </label>
+          <button class="popup__submit" id="popup__submit-add" type="submit" value="Создать" >
+            Создать
+          </button>
+        </form>
+      </div>
+    </section>
+
+<!-- просмотр картинки -->
+
+    <section class="popup popup__content_image">
+      <div class="popup__image-block">
+        <button class="popup__button-close" type="button" >
+        </button>
+        <figure class="popup__figure">
+          <img class="popup__image" src=" " alt="Картинка">
+          <figcaption class="popup__image-caption"></figcaption>
+        </figure>
+      </div>
+    </section>
+
     <script src="./script/index.js" defer></script>
 </body>
 </html>
