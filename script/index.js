@@ -90,7 +90,7 @@ const handleFormSubmitAddCard = (e) => {
     link: cardLinkForm.value,
   });
   e.target.reset();
-  popupClassOpen(popupAddCard);
+  popupClassOpen(popupAddcard);
 }
 
 // Событие клика на редактирование профиля
