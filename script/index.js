@@ -49,18 +49,18 @@ const initialCards = [
 
 //Переменные для содержимого popup
 
-let profileName = document.querySelector('.profile__user');
-let profileDiscription = document.querySelector('.profile__discription');
+const profileName = document.querySelector('.profile__user');
+const profileDiscription = document.querySelector('.profile__discription');
 // Находим форму в DOM
-let formElement = document.querySelector('.popup__form');
+const formElement = document.querySelector('.popup__form');
 // Находим поля формы в DOM
-let nameInput = document.querySelector('.popup__input_post_name');
-let jobInput = document.querySelector('.popup__input_post_activity');
-let imageZoom = document.querySelector('.popup__image');
-let imageZoomName = document.querySelector('.popup__image-caption');
+const nameInput = document.querySelector('.popup__input_post_name');
+const jobInput = document.querySelector('.popup__input_post_activity');
+const imageZoom = document.querySelector('.popup__image');
+const imageZoomName = document.querySelector('.popup__image-caption');
 
 
-// открытие и закрытие popup
+// Открытие и закрытие popup
 
 const popupClassOpen = function (popup) {
   popup.classList.toggle('popup_opened');
@@ -107,6 +107,8 @@ popupCloseEditButton.addEventListener('click', function () {
 
 formElement.addEventListener('submit', handleFormSubmit);
 
+
+// Событие клика на добавление карточки
 
 profileAddButton.addEventListener('click', function () {
 
