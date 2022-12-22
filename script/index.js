@@ -1,7 +1,7 @@
 // Объявление переменных popup
-const popupProfileEdit = document.querySelector('.popup__profile-edit');
-const popupAddcard = document.querySelector('.popup__card-add');
-const popupZoomImg = document.querySelector('.popup__content_image');
+const popupProfileEdit = document.querySelector('.popup__type_profile-edit');
+const popupAddcard = document.querySelector('.popup__type_card-add');
+const popupZoomImg = document.querySelector('.popup__type_content-image');
 
 // Переменные открытия и закрытия popup
 
@@ -16,7 +16,7 @@ const popupCloseZoomImg = popupZoomImg.querySelector('.popup__button-close');
 
 const elementsList = document.querySelector('.elements__list');
 const elementsTemplate = document.querySelector('#elements-template').content;
-const cardAddForm = document.querySelector('.popup__card-add');
+const cardAddForm = document.querySelector('#form-add-cards');
 const cardNameForm = document.querySelector('.name');
 const cardLinkForm = document.querySelector('.link');
 
