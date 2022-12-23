@@ -60,10 +60,14 @@ const popupImage = document.querySelector('.popup__image');
 const popupImageCaption = document.querySelector('.popup__image-caption');
 
 
-// Открытие и закрытие popup
+// Открытие и закрыт popup
 
 const openPopup = function (popup) {
-  popup.classList.toggle('popup_opened');
+  popup.classList.add('popup_opened');
+}
+
+const closePopup= function (popup) {
+  popup.classList.remove('popup_opened');
 }
 
 
@@ -73,7 +77,7 @@ function handleFormSubmit (evt) {
     evt.preventDefault();
     profileUserName.textContent = inputPostName.value;
     profileDiscription.textContent = inputPostActivity.value;
-    openPopup(popupProfileEdit);
+    closePopup(popupProfileEdit);
 }
 
 //Функция «отправки» формы для карточки
@@ -84,7 +88,7 @@ const handleFormSubmitAddCard = (e) => {
     link: formCardLink.value,
   });
   e.target.reset();
-  openPopup(popupCardAdd);
+  closePopup(popupCardAdd);
 }
 
 // Событие клика на редактирование профиля
@@ -109,14 +113,14 @@ profileBtnAdd.addEventListener('click', function () {
 
 
 popupCloseProfileEdit.addEventListener('click', function () {
-  openPopup(popupProfileEdit);
+  closePopup(popupProfileEdit);
 })
 popupCloseCardAdd.addEventListener('click', function () {
-  openPopup(popupCardAdd);
+  closePopup(popupCardAdd);
 })
 
 popupCloseImageZoom.addEventListener('click', function () {
-  openPopup(popupImageZoom);
+  closePopup(popupImageZoom);
 })
 
 formCardsAdd.addEventListener('submit', handleFormSubmitAddCard);
