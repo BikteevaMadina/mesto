@@ -16,7 +16,7 @@ const popupCloseImageZoom = popupImageZoom.querySelector('.popup__button-close')
 
 const elementsList = document.querySelector('.elements__list');
 const elementsTemplate = document.querySelector('#elements-template').content;
-const formCardsAdd = document.querySelector('#form-cards-add');
+const formCardsAdd = document.forms['card-form'];
 const formCardName = document.querySelector('.name');
 const formCardLink = document.querySelector('.link');
 
@@ -52,7 +52,7 @@ const initialCards = [
 const profileUserName = document.querySelector('.profile__user');
 const profileDiscription = document.querySelector('.profile__discription');
 // Находим форму в DOM
-const formProfileEdit = document.querySelector('#form-profile-edit');
+const formProfileEdit = document.forms['profile-form'];
 // Находим поля формы в DOM
 const inputPostName = document.querySelector('.popup__input_post_name');
 const inputPostActivity = document.querySelector('.popup__input_post_activity');
@@ -73,7 +73,7 @@ const closePopup= function (popup) {
 
 // Обработчик «отправки» формы для редактирования профиля
 
-function handleFormSubmit (evt) {
+function handleProfileFormSubmit (evt) {
     evt.preventDefault();
     profileUserName.textContent = inputPostName.value;
     profileDiscription.textContent = inputPostActivity.value;
@@ -83,7 +83,7 @@ function handleFormSubmit (evt) {
 //Функция «отправки» формы для карточки
 const handleFormSubmitAddCard = (e) => {
   e.preventDefault();
-  renderInitialCards({
+  renderCard({
     name: formCardName.value,
     link: formCardLink.value,
   });
@@ -100,7 +100,7 @@ profileBtnEdit.addEventListener('click', function() {
 });
 
 
-formProfileEdit.addEventListener('submit', handleFormSubmit);
+formProfileEdit.addEventListener('submit', handleProfileFormSubmit);
 
 
 // Событие клика на добавление карточки
@@ -111,17 +111,12 @@ profileBtnAdd.addEventListener('click', function () {
 
 //Событие закрытия popup по крестику
 
+const closeButtons = document.querySelectorAll('.popup__button-close');
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
+});
 
-popupCloseProfileEdit.addEventListener('click', function () {
-  closePopup(popupProfileEdit);
-})
-popupCloseCardAdd.addEventListener('click', function () {
-  closePopup(popupCardAdd);
-})
-
-popupCloseImageZoom.addEventListener('click', function () {
-  closePopup(popupImageZoom);
-})
 
 formCardsAdd.addEventListener('submit', handleFormSubmitAddCard);
 
@@ -129,12 +124,12 @@ formCardsAdd.addEventListener('submit', handleFormSubmitAddCard);
 // Спринт 5
 
 //Функция для лайка
-const likeElements = (event) => {
-  event.target.closest('.elements__like').classList.toggle('elements__like_active');
+const toggleLike = (event) => {
+  event.target.classList.toggle('elements__like_active');
 }
 
 // Функция для удаления
-const deleteElements = (event) => {
+const deleteElement = (event) => {
   event.target.closest('.elements__element').remove();
 }
 
@@ -146,21 +141,21 @@ const createElement = (item) => {
   const elementTitle = newElement.querySelector('.elements__title');
   elementTitle.textContent = item.name;
 
-  const elementImageLink = newElement.querySelector('.elements__image');
-  elementImageLink.src = item.link;
-  elementImageLink.alt = item.name;
+  const elementImage = newElement.querySelector('.elements__image');
+  elementImage.src = item.link;
+  elementImage.alt = item.name;
 
 
   // слушатель клика лайк
   const buttonElementLike = newElement.querySelector('.elements__like');
-  buttonElementLike.addEventListener('click', likeElements);
+  buttonElementLike.addEventListener('click', toggleLike);
 
   // слушатель клика удаление
   const buttonElementDelete = newElement.querySelector('.elements__delete');
-  buttonElementDelete.addEventListener('click', deleteElements);
+  buttonElementDelete.addEventListener('click', deleteElement);
 
   // функция просмотра картинки
-  elementImageLink.addEventListener('click', () => {
+  elementImage.addEventListener('click', () => {
     popupImage.src = item.link;
     popupImage.alt = item.name;
     popupImageCaption.textContent = item.name;
@@ -171,13 +166,11 @@ const createElement = (item) => {
   return newElement;
 }
 
-const renderInitialCards = (item) => {
+const renderCard = (item) => {
   elementsList.prepend(createElement(item));
 }
 
-initialCards.forEach(function (item) {
-renderInitialCards(item);
-})
+initialCards.forEach(renderCard);
 
 
 
