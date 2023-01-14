@@ -1,3 +1,4 @@
+//объект с классами
 const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -7,6 +8,8 @@ const validationConfig = {
   errorClass: 'popup__error_visible'
 };
 
+// выводим ошибки
+
 const showInputError = (formElement, inputElement, errorMessage, validationConfig) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
@@ -14,6 +17,8 @@ const showInputError = (formElement, inputElement, errorMessage, validationConfi
   errorElement.textContent = errorMessage;
   inputElement.classList.add(validationConfig.inputErrorClass);
 };
+
+// скрываем ошибки
 
 const hideInputError = (formElement, inputElement, validationConfig) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
@@ -23,11 +28,15 @@ const hideInputError = (formElement, inputElement, validationConfig) => {
   inputElement.classList.remove(validationConfig.inputErrorClass);
 };
 
+// проверям валидность форм
+
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   })
 }
+
+//функция вывода ошибки, если валидно и скрытия, если не валидно
 
 const checkInputValidity = (formElement, inputElement, validationConfig) => {
   if (!inputElement.validity.valid) {
@@ -37,6 +46,8 @@ const checkInputValidity = (formElement, inputElement, validationConfig) => {
   }
 };
 
+// сброс валидации форм
+
 const resetValidation = (formElement, validationConfig) => {
   const inputList = [...formElement.querySelectorAll(validationConfig.inputSelector)];
 
@@ -45,7 +56,7 @@ const resetValidation = (formElement, validationConfig) => {
   })
 }
 
-// // кнопка сохранить в неактивном состоянии
+// кнопка сохранить в неактивном состоянии
 
 const toggleBtnSubmit = (inputList, buttonElement, validationConfig) => {
    if (hasInvalidInput(inputList)) {
@@ -58,6 +69,9 @@ const toggleBtnSubmit = (inputList, buttonElement, validationConfig) => {
      buttonElement.disabled = false;
    }
  }
+
+
+ // слушатели для проверки валидации и работы с кнопкой сохранить
 
 const setEventListeners = (formElement, validationConfig) => {
   const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
@@ -78,6 +92,7 @@ const setEventListeners = (formElement, validationConfig) => {
   })
 }
 
+// функция валидации
 
 function enableValidation(validationConfig) {
   const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
