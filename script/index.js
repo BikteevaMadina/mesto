@@ -1,3 +1,5 @@
+
+
 // Объявление переменных popup
 const popupProfileEdit = document.querySelector('.popup_profile-edit');
 const popupCardAdd = document.querySelector('.popup_card-add');
@@ -20,32 +22,7 @@ const formCardsAdd = document.forms['card-form'];
 const formCardName = document.querySelector('.name');
 const formCardLink = document.querySelector('.link');
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+
 
 //Переменные для содержимого popup
 
@@ -62,15 +39,24 @@ const popupImageCaption = document.querySelector('.popup__image-caption');
 
 // Открытие и закрыт popup
 
+
 const openPopup = function (popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupOnEsc);
 }
 
 const closePopup= function (popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupOnEsc);
 }
 
-
+// зактрытие popup on ESC
+const closePopupOnEsc = (evt) => {
+  if (evt.key === 'Escape') {
+  const activePopup = document.querySelector('.popup_opened');
+  activePopup.remove();
+  }
+}
 // Обработчик «отправки» формы для редактирования профиля
 
 function handleProfileFormSubmit (evt) {
@@ -172,6 +158,17 @@ const renderCard = (item) => {
 
 initialCards.forEach(renderCard);
 
+// закрытие popup при click на overlay
+
+const closePopupOnOverlay = (e) => {
+  if (!e.target.closest('.popup__container')) {
+    closePopup(e.target);
+  }
+}
+
+popupProfileEdit.addEventListener('click',closePopupOnOverlay);
+popupCardAdd.addEventListener('click',closePopupOnOverlay);
+popupImageZoom.addEventListener('click',closePopupOnOverlay);
 
 
 
