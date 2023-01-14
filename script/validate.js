@@ -84,12 +84,6 @@ const setEventListeners = (formElement, validationConfig) => {
      toggleBtnSubmit(inputList, buttonElement, validationConfig);
     });
   })
-  formElement.addEventListener('reset', () => {
-    setTimeout(() => {
-       resetValidation(formElement, validationConfig);
-       toggleBtnSubmit(inputList, buttonElement, validationConfig);
-    }, 0)
-  })
 }
 
 // функция валидации
