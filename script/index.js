@@ -8,13 +8,9 @@ const popupImageZoom = document.querySelector(".popup_image-zoom");
 const profileBtnEdit = document.querySelector(".profile__button-edit");
 const profileBtnAdd = document.querySelector(".profile__button-add");
 
-const popupCloseProfileEdit = popupProfileEdit.querySelector(
-  ".popup__button-close"
-);
+const popupCloseProfileEdit = popupProfileEdit.querySelector(".popup__button-close");
 const popupCloseCardAdd = popupCardAdd.querySelector(".popup__button-close");
-const popupCloseImageZoom = popupImageZoom.querySelector(
-  ".popup__button-close"
-);
+const popupCloseImageZoom = popupImageZoom.querySelector(".popup__button-close");
 
 //Переменные для карточек
 const cardBtnSubmit = popupCardAdd.querySelector('#popup__submit-add');
