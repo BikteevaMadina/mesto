@@ -67,7 +67,6 @@ const handleFormSubmitAddCard = (e) => {
     name: formCardName.value,
     link: formCardLink.value,
   });
-  e.target.reset();
   closePopup(popupCardAdd);
 };
 
