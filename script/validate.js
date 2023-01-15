@@ -70,13 +70,28 @@ const resetValidation = (formElement, validationConfig) => {
 
 // кнопка сохранить в неактивном состоянии
 
+const toggleBtn = (buttonElement, inactiveButtonClass, on) => { 
+
+  if (on) {
+    buttonElement.disabled = false;
+    buttonElement.classList.remove(inactiveButtonClass);
+  }
+  else {
+    buttonElement.disabled = true;
+    buttonElement.classList.add(inactiveButtonClass);
+  }
+}
+
 const toggleBtnSubmit = (inputList, buttonElement, validationConfig) => {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add(validationConfig.inactiveButtonClass);
-    buttonElement.disabled = true;
+    toggleBtn(buttonElement, validationConfig.inactiveButtonClass,false )
+    // buttonElement.classList.add(validationConfig.inactiveButtonClass);
+    // buttonElement.disabled = true;
+
   } else {
-    buttonElement.classList.remove(validationConfig.inactiveButtonClass);
-    buttonElement.disabled = false;
+    toggleBtn(buttonElement, validationConfig.inactiveButtonClass, true)
+    // buttonElement.classList.remove(validationConfig.inactiveButtonClass);
+    // buttonElement.disabled = false;
   }
 };
 
@@ -112,3 +127,5 @@ function enableValidation(validationConfig) {
 }
 
 enableValidation(validationConfig);
+
+

@@ -84,8 +84,9 @@ formProfileEdit.addEventListener("submit", handleProfileFormSubmit);
 // Событие клика на добавление карточки
 
 profileBtnAdd.addEventListener("click", function () {
-  cardBtnSubmit.setAttribute('disabled', true);
-  cardBtnSubmit.classList.add('popup__submit_disabled');
+  // cardBtnSubmit.setAttribute('disabled', true);
+  // cardBtnSubmit.classList.add('popup__submit_disabled');
+  toggleBtn(cardBtnSubmit, 'popup__submit_disabled', false);
   formCardsAdd.reset();
   openPopup(popupCardAdd);
 });
