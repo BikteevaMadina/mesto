@@ -1,3 +1,4 @@
+
 //объект с классами
 const validationConfig = {
   formSelector: ".popup__form",
@@ -70,7 +71,7 @@ const resetValidation = (formElement, validationConfig) => {
 
 // кнопка сохранить в неактивном состоянии
 
-const toggleBtn = (buttonElement, inactiveButtonClass, on) => { 
+const toggleBtn = (buttonElement, inactiveButtonClass, on) => {
 
   if (on) {
     buttonElement.disabled = false;

@@ -1,3 +1,7 @@
+
+import { initialCards } from './utils.js';
+import { Card } from './Card.js';
+
 // Объявление переменных popup
 const popupProfileEdit = document.querySelector(".popup_profile-edit");
 const popupCardAdd = document.querySelector(".popup_card-add");
@@ -15,10 +19,11 @@ const popupCloseImageZoom = popupImageZoom.querySelector(".popup__button-close")
 //Переменные для карточек
 const cardBtnSubmit = popupCardAdd.querySelector('#popup__submit-add');
 const elementsList = document.querySelector(".elements__list");
-const elementsTemplate = document.querySelector("#elements-template").content;
+const elementsTemplate = document.querySelector("#elements-template").content.querySelector('.elements__element')
 const formCardsAdd = document.forms["card-form"];
 const formCardName = document.querySelector(".name");
 const formCardLink = document.querySelector(".link");
+
 
 //Переменные для содержимого popup
 
@@ -114,40 +119,52 @@ const deleteElement = (event) => {
 
 //Функция добавления новых карточек и карточек из массива//
 
-const createElement = (item) => {
-  const newElement = elementsTemplate.cloneNode(true);
+// const createElement = (item) => {
+//   const newElement = elementsTemplate.cloneNode(true);
 
-  const elementTitle = newElement.querySelector(".elements__title");
-  elementTitle.textContent = item.name;
+//   const elementTitle = newElement.querySelector(".elements__title");
+//   elementTitle.textContent = item.name;
 
-  const elementImage = newElement.querySelector(".elements__image");
-  elementImage.src = item.link;
-  elementImage.alt = item.name;
+//   const elementImage = newElement.querySelector(".elements__image");
+//   elementImage.src = item.link;
+//   elementImage.alt = item.name;
 
-  // слушатель клика лайк
-  const buttonElementLike = newElement.querySelector(".elements__like");
-  buttonElementLike.addEventListener("click", toggleLike);
+//   // слушатель клика лайк
+//   const buttonElementLike = newElement.querySelector(".elements__like");
+//   buttonElementLike.addEventListener("click", toggleLike);
 
-  // слушатель клика удаление
-  const buttonElementDelete = newElement.querySelector(".elements__delete");
-  buttonElementDelete.addEventListener("click", deleteElement);
+//   // слушатель клика удаление
+//   const buttonElementDelete = newElement.querySelector(".elements__delete");
+//   buttonElementDelete.addEventListener("click", deleteElement);
 
-  // функция просмотра картинки
-  elementImage.addEventListener("click", () => {
-    popupImage.src = item.link;
-    popupImage.alt = item.name;
-    popupImageCaption.textContent = item.name;
-    openPopup(popupImageZoom);
-  });
+//   // функция просмотра картинки
+//   elementImage.addEventListener("click", () => {
+//     popupImage.src = item.link;
+//     popupImage.alt = item.name;
+//     popupImageCaption.textContent = item.name;
+//     openPopup(popupImageZoom);
+//   });
 
-  return newElement;
+//   return newElement;
+// };
+
+const handleCardClick = (name, link) => {
+      popupImage.src = link;
+      popupImage.alt = name;
+      popupImageCaption.textContent = name;
+      openPopup(popupImageZoom);
+    };
+
+const renderCard = (data) => {
+  const newCard = new Card(data, "#elements-template", handleCardClick);
+  const cardElement = newCard.createCard();
+
+  elementsList.prepend(cardElement);
 };
 
-const renderCard = (item) => {
-  elementsList.prepend(createElement(item));
-};
-
-initialCards.forEach(renderCard);
+initialCards.forEach((element) => {
+  renderCard(element);
+});
 
 // закрытие popup при click на overlay
 
