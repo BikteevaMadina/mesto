@@ -4,6 +4,7 @@ export class Card {
     this._link = data.link;
     this._elementsTemplate = elementsTemplate;
     this._handleCardClick = handleCardClick;
+
   }
 
 
@@ -22,20 +23,20 @@ export class Card {
   }
 
    _handleLikeCard(event) {
-    event.target.closest('.elements__like').classList.toggle('elements__like_active');
-
+    //event.
+    this._newCard.querySelector('.elements__like').classList.toggle('elements__like_active');
    }
 
 
  _setEventListeners = () => {
       const deleteCardBtn = this._newCard.querySelector('.elements__delete');
-      deleteCardBtn.addEventListener('click',()=> this._handleDeleteCard);
+      deleteCardBtn.addEventListener('click',()=> {this._handleDeleteCard() });
 
       const likeCardBtn = this._newCard.querySelector('.elements__like');
-      likeCardBtn.addEventListener('click', ()=>  this._handleLikeCard);
+      likeCardBtn.addEventListener('click', ()=> { this._handleLikeCard() });
 
       // this._cardLink.addEventListener('click', ()=> this._handleCardClick (this._name, this._link));
-      this._newCard.addEventListener('click', () => this._handleCardClick(this._name, this._link));
+      this._newCard.querySelector('.elements__image').addEventListener('click', () =>{ this._handleCardClick(this._name, this._link)});
    }
 
   createCard () {
