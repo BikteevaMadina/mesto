@@ -34,7 +34,8 @@ export class Card {
       const likeCardBtn = this._newCard.querySelector('.elements__like');
       likeCardBtn.addEventListener('click', ()=>  this._handleLikeCard);
 
-      this._cardLink.addEventListener('click', ()=> this._handleCardClick (this._name, this._link));
+      // this._cardLink.addEventListener('click', ()=> this._handleCardClick (this._name, this._link));
+      this._newCard.addEventListener('click', () => this._handleCardClick(this._name, this._link));
    }
 
   createCard () {
@@ -46,8 +47,10 @@ export class Card {
     this._cardName.textContent = this._name;
 
     this._cardLink = this._newCard.querySelector('.elements__image');
+    // this._cardLink.src = this._link;
+    // this._cardLink.alt = this._name;
     this._cardLink.src = this._link;
-    this._cardLink.alt = this._name;
+    this._newCard.alt = this._name;
 
     return this._newCard;
   }
