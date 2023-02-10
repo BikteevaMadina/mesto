@@ -1,6 +1,7 @@
 
 import { initialCards } from './utils.js';
 import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 
 // Объявление переменных popup
 const popupProfileEdit = document.querySelector(".popup_profile-edit");
@@ -78,6 +79,8 @@ const handleFormSubmitAddCard = (e) => {
 // Событие клика на редактирование профиля
 
 profileBtnEdit.addEventListener("click", function () {
+profileEditFormValidator.resetValidation()
+
   inputPostName.value = profileUserName.textContent;
   inputPostActivity.value = profileDiscription.textContent;
   openPopup(popupProfileEdit);
@@ -90,6 +93,9 @@ formProfileEdit.addEventListener("submit", handleProfileFormSubmit);
 profileBtnAdd.addEventListener("click", function () {
   // cardBtnSubmit.setAttribute('disabled', true);
   // cardBtnSubmit.classList.add('popup__submit_disabled');
+
+  cardAddFormValidator.resetValidation();
+
   toggleBtn(cardBtnSubmit, 'popup__submit_disabled', false);
   formCardsAdd.reset();
   openPopup(popupCardAdd);
@@ -177,3 +183,24 @@ const closePopupOnOverlay = (e) => {
 popupProfileEdit.addEventListener("click", closePopupOnOverlay);
 popupCardAdd.addEventListener("click", closePopupOnOverlay);
 popupImageZoom.addEventListener("click", closePopupOnOverlay);
+
+// класс валидации
+
+const validationConfig = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit",
+  inactiveButtonClass: "popup__submit_disabled",
+  inputErrorClass: "popup__input_type_error",
+  errorClass: "popup__error_visible",
+};
+
+const cardAddForm = popupCardAdd.querySelector('.popup_form');
+const profileEditForm = popupProfileEdit.querySelector('.popup_form');
+
+
+const cardAddFormValidator = new FormValidator(validationConfig, cardAddForm);
+const profileEditFormValidator = new FormValidator(validationConfig, profileEditForm);
+
+cardAddFormValidator.enableValidation();
+profileEditFormValidator.enableValidation();
