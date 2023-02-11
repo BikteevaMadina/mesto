@@ -91,12 +91,12 @@ formProfileEdit.addEventListener("submit", handleProfileFormSubmit);
 // Событие клика на добавление карточки
 
 profileBtnAdd.addEventListener("click", function () {
-  // cardBtnSubmit.setAttribute('disabled', true);
-  // cardBtnSubmit.classList.add('popup__submit_disabled');
+   cardBtnSubmit.setAttribute('disabled', false);
+   cardBtnSubmit.classList.add('popup__submit_disabled');
 
   cardAddFormValidator.resetValidation();
 
-  toggleBtn(cardBtnSubmit, 'popup__submit_disabled', false);
+  //toggleBtn(cardBtnSubmit, 'popup__submit_disabled', false);
   formCardsAdd.reset();
   openPopup(popupCardAdd);
 });
@@ -195,8 +195,8 @@ const validationConfig = {
   errorClass: "popup__error_visible",
 };
 
-const cardAddForm = popupCardAdd.querySelector('.popup_form');
-const profileEditForm = popupProfileEdit.querySelector('.popup_form');
+const cardAddForm = popupCardAdd.querySelector('.popup__form');
+const profileEditForm = popupProfileEdit.querySelector('.popup__form');
 
 
 const cardAddFormValidator = new FormValidator(validationConfig, cardAddForm);
