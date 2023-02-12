@@ -46,13 +46,27 @@ _checkInputValidity = (inputElement) => {
   }
 };
 
+toggleBtn= (on) => {
+  if (on) {
+    this._buttonSubmit.disabled = false;
+    this._buttonSubmit.classList.remove(this._validationConfig.inactiveButtonClass);
+      }
+      else {
+        this._buttonSubmit.disabled = true;
+        this._buttonSubmit.classList.add(this._validationConfig.inactiveButtonClass);
+      }
+    }
+
+
   _toggleBtnSubmit = () => {
     if (this._hasInvalidInput(this._inputList)) {
-      this._buttonSubmit.classList.add(this._validationConfig.inactiveButtonClass)
-      this._buttonSubmit.disabled = true;
+      this.toggleBtn(this._buttonSubmit, this._validationConfig.inactiveButtonClass, false)
+      // this._buttonSubmit.classList.add(this._validationConfig.inactiveButtonClass)
+      // this._buttonSubmit.disabled = true;
     } else {
-      this._buttonSubmit.classList.remove(this._validationConfig.inactiveButtonClass)
-      this._buttonSubmit.disabled = false;
+      this.toggleBtn(this._buttonSubmit, this._validationConfig.inactiveButtonClass, true)
+      // this._buttonSubmit.classList.remove(this._validationConfig.inactiveButtonClass)
+      // this._buttonSubmit.disabled = false;
     }
   }
 

@@ -80,7 +80,7 @@ const handleFormSubmitAddCard = (e) => {
 
 profileBtnEdit.addEventListener("click", function () {
 profileEditFormValidator.resetValidation()
-
+profileEditFormValidator.toggleBtn();
   inputPostName.value = profileUserName.textContent;
   inputPostActivity.value = profileDiscription.textContent;
   openPopup(popupProfileEdit);
@@ -91,12 +91,12 @@ formProfileEdit.addEventListener("submit", handleProfileFormSubmit);
 // Событие клика на добавление карточки
 
 profileBtnAdd.addEventListener("click", function () {
-   cardBtnSubmit.setAttribute('disabled', false);
-   cardBtnSubmit.classList.add('popup__submit_disabled');
+  //  cardBtnSubmit.setAttribute('disabled', true);
+  //  cardBtnSubmit.classList.add('popup__submit_disabled');
 
   cardAddFormValidator.resetValidation();
 
-  //toggleBtn(cardBtnSubmit, 'popup__submit_disabled', false);
+  cardAddFormValidator.toggleBtn();
   formCardsAdd.reset();
   openPopup(popupCardAdd);
 });
