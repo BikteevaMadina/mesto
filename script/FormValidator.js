@@ -2,7 +2,8 @@ export class FormValidator {
   constructor(validationConfig, formElement) {
     this._formElement = formElement;
     this._validationConfig = validationConfig;
-    this._buttonSubmit = this._formElement.querySelector(this._validationConfig.submitButtonSelector)
+    this._buttonSubmit = this._formElement.querySelector(this._validationConfig.submitButtonSelector);
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._validationConfig.inputSelector));
   }
 
 
@@ -50,8 +51,7 @@ toggleBtn= (on) => {
   if (on) {
     this._buttonSubmit.disabled = false;
     this._buttonSubmit.classList.remove(this._validationConfig.inactiveButtonClass);
-      }
-      else {
+      } else {
         this._buttonSubmit.disabled = true;
         this._buttonSubmit.classList.add(this._validationConfig.inactiveButtonClass);
       }
@@ -70,17 +70,21 @@ toggleBtn= (on) => {
     }
   }
 
-  enableValidation() {
-    this._inputList = Array.from(this._formElement.querySelectorAll(this._validationConfig.inputSelector));
-
-      this._toggleBtnSubmit(this._buttonSubmit);
-
-      this._inputList.forEach((inputElement) => {
+  _setEventListeners(){
+   this._inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () =>{
         this._checkInputValidity(inputElement);
+
         this._toggleBtnSubmit();
         })
       })
+  }
+
+  enableValidation() {
+      this._toggleBtnSubmit();
+      this. _setEventListeners();
+
+
 
     }
 }

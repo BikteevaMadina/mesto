@@ -4,12 +4,16 @@ export class Card {
     this._link = data.link;
     this._elementsTemplate = elementsTemplate;
     this._handleCardClick = handleCardClick;
-
+    this._newCard = this._getTemplate();
+    this._deleteCardBtn = this._newCard.querySelector('.elements__delete')
+    this._likeCardBtn = this._newCard.querySelector('.elements__like');
+    this._cardName = this._newCard.querySelector('.elements__title');
+    this._cardLink = this._newCard.querySelector('.elements__image');
   }
 
-
   _getTemplate() {
-    const newCard = document.querySelector(this._elementsTemplate)
+    const newCard = document
+    .querySelector(this._elementsTemplate)
     .content
     .querySelector('.elements__element')
     .cloneNode(true);
@@ -19,39 +23,25 @@ export class Card {
 
  _handleDeleteCard = () => {
     this._newCard.remove();
-    this._newCard = null
   }
 
-   _handleLikeCard(event) {
-    //event.
+   _handleLikeCard() {
     this._newCard.querySelector('.elements__like').classList.toggle('elements__like_active');
    }
 
-
  _setEventListeners = () => {
-      const deleteCardBtn = this._newCard.querySelector('.elements__delete');
-      deleteCardBtn.addEventListener('click',()=> {this._handleDeleteCard() });
-
-      const likeCardBtn = this._newCard.querySelector('.elements__like');
-      likeCardBtn.addEventListener('click', ()=> { this._handleLikeCard() });
-
+      this._deleteCardBtn.addEventListener('click',()=> {this._handleDeleteCard() });
+      this._likeCardBtn.addEventListener('click', ()=> { this._handleLikeCard() });
       // this._cardLink.addEventListener('click', ()=> this._handleCardClick (this._name, this._link));
       this._newCard.querySelector('.elements__image').addEventListener('click', () =>{ this._handleCardClick(this._name, this._link)});
    }
 
   createCard () {
-    this._newCard = this._getTemplate();
-
-    this._setEventListeners();
-
-    this._cardName = this._newCard.querySelector('.elements__title');
     this._cardName.textContent = this._name;
-
-    this._cardLink = this._newCard.querySelector('.elements__image');
-    // this._cardLink.src = this._link;
-    // this._cardLink.alt = this._name;
     this._cardLink.src = this._link;
     this._newCard.alt = this._name;
+
+    this._setEventListeners();
 
     return this._newCard;
   }
