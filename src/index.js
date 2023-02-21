@@ -6,7 +6,7 @@ import Section from '../script/Section.js';
 import { PopupWithImage } from '../script/PopupWithImage.js';
 import { PopupWithForm } from '../script/PopupWithForm.js';
 import { UserInfo } from '../script/UserInfo.js';
-import { initialCards,
+import {initialCards,
   popupProfileEdit,
   popupCardAdd,
   popupImageSelector,
@@ -86,34 +86,33 @@ profileBtnAdd.addEventListener("click", function () {
 const closeButtons = document.querySelectorAll(".popup__button-close");
 closeButtons.forEach((button) => {
   const popup = button.closest(".popup");
-  button.addEventListener("click", () => popup.close());
+  button.addEventListener("click", () => close(popup));
 });
 
-const popupZoomImage = new PopupWithImage(popupImageSelector)
+const popupZoomImage = new PopupWithImage(".popup_image-zoom")
 popupZoomImage.setEventListeners()
-
 const handleCardClick = (name, link) => {
   popupZoomImage.open(name,link)
     }
 
 const renderCard = (item) => {
-  const newCard = new Card(item, elementsTemplate, handleCardClick);
+  const newCard = new Card(item, '#elements-template', handleCardClick);
   const cardElement = newCard.createCard();
 
  return cardElement
 };
 
-const cardElementsList = new Section ({
+const cardElementsList = new Section(
+  {
   items: initialCards,
   renderer: (item) => {
     const card = renderCard(item)
     cardElementsList.addItem(card)
   },
 },
-elementsListContainer,
-)
+".elements__list")
 
-cardElementsList.renderItems();
+cardElementsList.renderItems()
 
 // закрытие popup при click на overlay
 
@@ -125,7 +124,7 @@ const closePopupOnOverlay = (e) => {
 
 popupProfileEdit.addEventListener("click", closePopupOnOverlay);
 popupCardAdd.addEventListener("click", closePopupOnOverlay);
-popupImageZoom.addEventListener("click", closePopupOnOverlay);
+popupImageSelector.addEventListener("click", closePopupOnOverlay);
 
 // класс валидации
 
