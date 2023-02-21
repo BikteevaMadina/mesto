@@ -59,26 +59,19 @@ popupCardAddForm.setEventListeners()
 profileBtnEdit.addEventListener("click",  () => {
 profileEditFormValidator.resetValidation()
 // profileEditFormValidator.toggleBtn();
+popupProfileEditForm.open()
 
 const {name, info } = userInfo.getUserInfo()
-
 inputPostName.value = name
 inputPostActivity.value = info
-popupProfileEditForm.open()
 });
-
 
 // Событие клика на добавление карточки
 
 profileBtnAdd.addEventListener("click", function () {
   cardBtnSubmit.setAttribute('disabled', true);
-  //  cardBtnSubmit.classList.add('popup__submit_disabled');
 
   cardAddFormValidator.resetValidation();
-
-  //cardAddFormValidator.toggleBtn();
-
-  // formCardsAdd.reset();
 
   popupCardAddForm.open();
 });
@@ -93,7 +86,6 @@ closeButtons.forEach((button) => {
     popupZoomImage.close();
     popupProfileEditForm.close();
   })
-  ;
 });
 
 const popupZoomImage = new PopupWithImage(".popup_image-zoom")

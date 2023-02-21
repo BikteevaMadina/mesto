@@ -6,8 +6,6 @@ export class FormValidator {
     this._inputList = Array.from(this._formElement.querySelectorAll(this._validationConfig.inputSelector));
   }
 
-
-
  _hasInvalidInput = () => {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
@@ -56,7 +54,6 @@ _checkInputValidity = (inputElement) => {
 //         this._buttonSubmit.classList.add(this._validationConfig.inactiveButtonClass);
 //       }
 //     }
-
 
   _toggleBtnSubmit = () => {
     if (this._hasInvalidInput(this._inputList)) {
