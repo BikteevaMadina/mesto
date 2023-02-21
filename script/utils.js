@@ -60,6 +60,9 @@ export const inputPostActivity = document.querySelector(".popup__input_post_acti
 export const popupImage = document.querySelector(".popup__image");
 export const popupImageCaption = document.querySelector(".popup__image-caption");
 
+export const cardAddForm = popupCardAdd.querySelector('.popup__form');
+export const profileEditForm = popupProfileEdit.querySelector('.popup__form');
+
 export const validationConfig = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
