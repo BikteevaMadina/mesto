@@ -85,11 +85,17 @@ profileBtnAdd.addEventListener("click", function () {
 
 //Событие закрытия popup по крестику
 
-// const closeButtons = document.querySelectorAll(".popup__button-close");
-// closeButtons.forEach((button) => {
-//   const popup = button.closest(".popup");
-//   button.addEventListener("click", () => close(popup));
-// });
+const closeButtons = document.querySelectorAll(".popup__button-close");
+closeButtons.forEach((button) => {
+  const popup = button.closest(".popup");
+  button.addEventListener("click", () => {
+    popupCardAddForm.close();
+    popupZoomImage.close();
+    popupProfileEditForm.close();
+
+  })
+  ;
+});
 
 const popupZoomImage = new PopupWithImage(".popup_image-zoom")
 popupZoomImage.setEventListeners()
@@ -135,5 +141,4 @@ const profileEditFormValidator = new FormValidator(validationConfig, profileEdit
 
 cardAddFormValidator.enableValidation();
 profileEditFormValidator.enableValidation();
-
 

@@ -30,3 +30,5 @@ this._popupSelector.addEventListener('click', (e)=>{
 })
   }
 }
+
+
