@@ -31,8 +31,8 @@ import {initialCards,
   validationConfig
 } from '../script/utils.js'
 
-function handleProfileFormSubmit(evt, formValues) {
-  evt.preventDefault();
+const handleProfileFormSubmit = (evt, formValues) => {
+  evt.preventDefault()
   userInfo.setUserInfo(formValues.name, formValues.info)
 }
 
@@ -62,9 +62,9 @@ profileEditFormValidator.resetValidation()
 
 const {name, info } = userInfo.getUserInfo()
 
-inputPostName.value = name;
-inputPostActivity.value = info;
-popupProfileEditForm.open();
+inputPostName.value = name
+inputPostActivity.value = info
+popupProfileEditForm.open()
 });
 
 
@@ -92,7 +92,6 @@ closeButtons.forEach((button) => {
     popupCardAddForm.close();
     popupZoomImage.close();
     popupProfileEditForm.close();
-
   })
   ;
 });
