@@ -31,9 +31,11 @@ import {initialCards,
   validationConfig
 } from '../script/utils.js'
 
-const handleProfileFormSubmit = (evt, formValues) => {
+const handleProfileFormSubmit = (evt) => {
   evt.preventDefault()
-  userInfo.setUserInfo(formValues.name, formValues.info)
+  //userInfo.setUserInfo(formValues.name, formValues.info)
+  profileUserName.textContent = inputPostName.value;
+  profileDiscription.textContent = inputPostActivity.value;
 }
 
 const popupProfileEditForm = new PopupWithForm (".popup_profile-edit", handleProfileFormSubmit)
@@ -64,6 +66,7 @@ popupProfileEditForm.open()
 const {name, info } = userInfo.getUserInfo()
 inputPostName.value = name
 inputPostActivity.value = info
+console.log(name)
 });
 
 // Событие клика на добавление карточки
