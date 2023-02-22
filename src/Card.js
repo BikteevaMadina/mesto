@@ -32,8 +32,7 @@ export class Card {
  _setEventListeners = () => {
       this._deleteCardBtn.addEventListener('click',()=> {this._handleDeleteCard() });
       this._likeCardBtn.addEventListener('click', ()=> { this._handleLikeCard() });
-      //this._cardLink.addEventListener('click', ()=> {this._handleCardClick(this._name, this._link)});
-      this._newCard.querySelector('.elements__image').addEventListener('click', () =>{this._handleCardClick(this._name, this._link)});
+      this._cardLink.addEventListener('click', ()=> {this._handleCardClick(this._name, this._link)});
 
    }
 
@@ -41,7 +40,6 @@ export class Card {
     this._cardName.textContent = this._name;
     this._cardLink.src = this._link;
     this._newCard.alt = this._name;
-
 
     this._setEventListeners();
 

@@ -14,20 +14,11 @@ import {initialCards,
   popupImageSelector,
   profileBtnEdit,
   profileBtnAdd,
-  popupCloseProfileEdit,
-  popupCloseCardAdd,
-  popupCloseImageZoom,
   cardBtnSubmit,
-  elementsListContainer,
-  elementsTemplate,
-  formCardName,
-  formCardLink,
   profileUserName,
   profileDiscription,
   inputPostName,
   inputPostActivity,
-  popupImage,
-  popupImageCaption,
   validationConfig
 } from './utils.js'
 
@@ -60,35 +51,18 @@ popupCardAddForm.setEventListeners()
 
 profileBtnEdit.addEventListener("click",  () => {
 profileEditFormValidator.resetValidation()
-// profileEditFormValidator.toggleBtn();
 popupProfileEditForm.open()
 
 const {name, info } = userInfo.getUserInfo()
 inputPostName.value = name
 inputPostActivity.value = info
-console.log(name)
 });
 
 // Событие клика на добавление карточки
 
 profileBtnAdd.addEventListener("click", function () {
-  cardBtnSubmit.setAttribute('disabled', true);
-
   cardAddFormValidator.resetValidation();
-
   popupCardAddForm.open();
-});
-
-//Событие закрытия popup по крестику
-
-const closeButtons = document.querySelectorAll(".popup__button-close");
-closeButtons.forEach((button) => {
-  const popup = button.closest(".popup");
-  button.addEventListener("click", () => {
-    popupCardAddForm.close();
-    popupZoomImage.close();
-    popupProfileEditForm.close();
-  })
 });
 
 const popupZoomImage = new PopupWithImage(".popup_image-zoom")
@@ -116,16 +90,6 @@ const cardElementsList = new Section(
 ".elements__list")
 
 cardElementsList.renderItems()
-
-// закрытие popup при click на overlay
-
-const closePopupOnOverlay = (e) => {
-  !e.target.closest(".popup__container")
-};
-
-popupProfileEdit.addEventListener("click", closePopupOnOverlay);
-popupCardAdd.addEventListener("click", closePopupOnOverlay);
-popupImageSelector.addEventListener("click", closePopupOnOverlay);
 
 // класс валидации
 

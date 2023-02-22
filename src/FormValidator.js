@@ -72,9 +72,13 @@ _checkInputValidity = (inputElement) => {
         inputElement.addEventListener('input', () =>{
         this._checkInputValidity(inputElement);
 
+
+
         this._toggleBtnSubmit();
         })
       })
+
+      
   }
 
   enableValidation() {
