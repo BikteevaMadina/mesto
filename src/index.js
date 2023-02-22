@@ -1,11 +1,11 @@
-//import '../pages/index.css';
+import './pages/index.css';
 
-import { Card } from '../script/Card.js';
-import { FormValidator } from '../script/FormValidator.js';
-import Section from '../script/Section.js';
-import { PopupWithImage } from '../script/PopupWithImage.js';
-import { PopupWithForm } from '../script/PopupWithForm.js';
-import { UserInfo } from '../script/UserInfo.js';
+import { Card } from './Card';
+import { FormValidator } from './FormValidator';
+import Section from './Section.js';
+import { PopupWithImage } from './PopupWithImage.js';
+import { PopupWithForm } from './PopupWithForm.js';
+import { UserInfo } from './UserInfo';
 import {initialCards,
   cardAddForm,
   profileEditForm,
@@ -29,7 +29,7 @@ import {initialCards,
   popupImage,
   popupImageCaption,
   validationConfig
-} from '../script/utils.js'
+} from './utils.js'
 
 const handleProfileFormSubmit = (evt) => {
   evt.preventDefault()
@@ -119,9 +119,7 @@ cardElementsList.renderItems()
 // закрытие popup при click на overlay
 
 const closePopupOnOverlay = (e) => {
-  if (!e.target.closest(".popup__container")) {
-    closePopup(e.target);
-  }
+  !e.target.closest(".popup__container")
 };
 
 popupProfileEdit.addEventListener("click", closePopupOnOverlay);
