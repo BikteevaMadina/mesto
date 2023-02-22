@@ -26,20 +26,22 @@ export class Card {
   }
 
    _handleLikeCard() {
-    this._newCard.querySelector('.elements__like').classList.toggle('elements__like_active');
+    this._likeCardBtn.classList.toggle('elements__like_active');
    }
 
  _setEventListeners = () => {
       this._deleteCardBtn.addEventListener('click',()=> {this._handleDeleteCard() });
       this._likeCardBtn.addEventListener('click', ()=> { this._handleLikeCard() });
-      // this._cardLink.addEventListener('click', ()=> this._handleCardClick (this._name, this._link));
-      this._newCard.querySelector('.elements__image').addEventListener('click', () =>{ this._handleCardClick(this._name, this._link)});
+      //this._cardLink.addEventListener('click', ()=> {this._handleCardClick(this._name, this._link)});
+      this._newCard.querySelector('.elements__image').addEventListener('click', () =>{this._handleCardClick(this._name, this._link)});
+
    }
 
   createCard () {
     this._cardName.textContent = this._name;
     this._cardLink.src = this._link;
     this._newCard.alt = this._name;
+
 
     this._setEventListeners();
 

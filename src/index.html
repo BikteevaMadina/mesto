@@ -78,14 +78,14 @@
         <form class="popup__form" id="form-cards-add" name="card-form" novalidate>
           <h3 class="popup__title">Новый пост</h3>
           <label class="popup__label">
-            <input class="popup__input popup__input_post_name name" id="cards-name"
+            <input class="popup__input popup__input_post_name name" name="name" id="cards-name"
             type="text"
             placeholder="Название" maxlength="30" minlength="2" required>
             <span class="popup__error cards-name-error" id="cards-name-error"></span>
           </label>
           <label class="popup__label">
             <input class="popup__input popup__input_post_activity link"
-                   type="url" id="link"
+                   type="url" id="link" name="link"
                   placeholder="Ссылка на картинку" required>
             <span class="popup__error link-error" id="link-error"></span>
           </label>

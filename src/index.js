@@ -42,9 +42,9 @@ const popupProfileEditForm = new PopupWithForm (".popup_profile-edit", handlePro
 popupProfileEditForm.setEventListeners()
 
 //Функция «отправки» формы для карточки
-const handleFormSubmitAddCard = (evt, item) => {
+const handleFormSubmitAddCard = (evt,item) => {
   evt.preventDefault();
-  const card = renderCard(item)
+ const card = renderCard(item)
   cardElementsList.addItem(card)
 };
 
@@ -93,8 +93,9 @@ closeButtons.forEach((button) => {
 
 const popupZoomImage = new PopupWithImage(".popup_image-zoom")
 popupZoomImage.setEventListeners()
+
 const handleCardClick = (name, link) => {
-  popupZoomImage.open(name,link)
+  popupZoomImage.open(name, link)
     }
 
 const renderCard = (item) => {
