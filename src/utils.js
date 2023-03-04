@@ -1,29 +1,29 @@
- export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+//  export const initialCards = [
+//   {
+//     name: 'Архыз',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+//   },
+//   {
+//     name: 'Челябинская область',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+//   },
+//   {
+//     name: 'Иваново',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+//   },
+//   {
+//     name: 'Камчатка',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+//   },
+//   {
+//     name: 'Холмогорский район',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+//   },
+//   {
+//     name: 'Байкал',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+//   }
+// ];
 
 // Объявление переменных popup
 export const popupProfileEdit = document.querySelector(".popup_profile-edit");
@@ -48,20 +48,27 @@ export const formCardName = document.querySelector(".name");
 export const formCardLink = document.querySelector(".link");
 
 
-//Переменные для содержимого popup
+//Переменные для содержимого popup profile
 
 export const profileUserName = document.querySelector(".profile__user");
 export const profileDiscription = document.querySelector(".profile__discription");
+export const profileAvatar = document.querySelector('.profile__avatar');
+export const popupDeleteCard = document.querySelector('.popup_delete-card');
+export const popupEditAvatar = document.querySelector('.popup-avatar-edit')
+
 // Находим форму в DOM
 
 // Находим поля формы в DOM
 export const inputPostName = document.querySelector(".popup__input_post_name");
 export const inputPostActivity = document.querySelector(".popup__input_post_activity");
+export const popupLinkAvatar = document.querySelector('.popup__input_link')
 export const popupImage = document.querySelector(".popup__image");
 export const popupImageCaption = document.querySelector(".popup__image-caption");
 
 export const cardAddForm = popupCardAdd.querySelector('.popup__form');
 export const profileEditForm = popupProfileEdit.querySelector('.popup__form');
+export const avatarEditForm = popupEditAvatar.querySelector('.popup__form');
+export const avatarEditButton = document.querySelector('.profile__button-edit-avatar')
 
 export const validationConfig = {
   formSelector: ".popup__form",

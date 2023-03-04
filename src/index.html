@@ -13,7 +13,9 @@
     </header>
     <main class="content">
         <section class="profile">
+          <button class="profile__button-edit-avatar" title="Редактировать аватар">
             <img class="profile__avatar" src="<%=require('./pictures/avatar.jpg')%>" alt="Фотография профиля">
+          </button>
             <div class="profile__info">
                 <div class="profile__name">
                   <h1 class="profile__user">Жак&#8209;Ив&nbsp;Кусто</h1>
@@ -25,7 +27,6 @@
         </section>
         <section class="elements">
             <ul class="elements__list">
-
             </ul>
         </section>
     </main>
@@ -40,7 +41,10 @@
       <img class="elements__image" src=" " alt=" ">
       <div class="elements__discription">
           <h2 class="elements__title"></h2>
+          <div class="elements__like-discription">
           <button class="elements__like" type="button" title="Нравится"></button>
+          <p class="elements__like-quantity" title="Количество лайков">0</p>
+        </div>
       </div>
       <button class="elements__delete" type="button" title="Удалить"></button>
   </li>
@@ -109,6 +113,35 @@
       </div>
     </section>
 
-    <script type="module" src="./index.js"></script>
+    <!-- подтверждение удаления карточки -->
+    <section class="popup popup_delete-card">
+      <div class="popup__container popup__container_small_size">
+        <button class="popup__button-close" type="button"></button>
+        <h2 class="popup__title">Вы уверены?</h2>
+        <button class="popup__submit" type="submit" value="Подтвердить">Да</button>
+      </div>
+    </section>
+
+<!-- редактирование аватара -->
+
+    <section class="popup popup-avatar-edit">
+      <div class="popup__container">
+        <button class="popup__button-close"></button>
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="popup__form" id="form-avatar-edit" name="card-form" novalidate>
+          <label class="popup__label">
+            <input class="popup__input popup__input_post_activity link popup__input_link"
+                   type="url" id="link" name="link"
+                  placeholder="Ссылка на картинку" required>
+            <span class="popup__error link-avatar-error" id="link-avatar-error"></span>
+          </label>
+          <button class="popup__submit" id="popup__submit-avatar" type="submit" value="Создать" >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </section>
+
+
 </body>
 </html>
