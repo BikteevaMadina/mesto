@@ -45,21 +45,15 @@ _checkInputValidity = (inputElement) => {
   }
 };
 
-// toggleBtn= (on) => {
-//   if (on) {
-//     this._buttonSubmit.disabled = false;
-//     this._buttonSubmit.classList.remove(this._validationConfig.inactiveButtonClass);
-//       } else {
-//         this._buttonSubmit.disabled = true;
-//         this._buttonSubmit.classList.add(this._validationConfig.inactiveButtonClass);
-//       }
-//     }
+ toggleBtn () {
+  this._buttonSubmit.classList.add(this._validationConfig.inactiveButtonClass)
+  this._buttonSubmit.disabled = true;
+    }
 
   _toggleBtnSubmit = () => {
     if (this._hasInvalidInput(this._inputList)) {
-      // this.toggleBtn(this._buttonSubmit, this._validationConfig.inactiveButtonClass, false)
-      this._buttonSubmit.classList.add(this._validationConfig.inactiveButtonClass)
-      this._buttonSubmit.disabled = true;
+    this.toggleBtn()
+
     } else {
       // this.toggleBtn(this._buttonSubmit, this._validationConfig.inactiveButtonClass, true)
       this._buttonSubmit.classList.remove(this._validationConfig.inactiveButtonClass)
@@ -79,6 +73,6 @@ _checkInputValidity = (inputElement) => {
 
   enableValidation() {
       this._toggleBtnSubmit();
-      this. _setEventListeners();
+      this._setEventListeners();
     }
 }

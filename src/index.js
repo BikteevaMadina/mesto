@@ -17,7 +17,7 @@ import {initialCards,
   popupImageSelector,
   profileBtnEdit,
   profileBtnAdd,
-  popupEditAvatar,
+  popupEditAvatarSelector,
   avatarEditButton,
   cardBtnSubmit,
   profileUserName,
@@ -28,7 +28,7 @@ import {initialCards,
   popupLinkAvatar,
   validationConfig
 } from './utils.js';
-import {PopupWithSubmit} from './PopupWithSubmit';
+import {PopupWithSubmit} from './PopupWithSubmit.js';
 let userId = null;
 
 const api = new Api({
@@ -39,28 +39,17 @@ const api = new Api({
   }
 })
 
-Promise.all([api.getUserInfo(), api.getInitialCards])           //обработка данных пользователя, затем карточек
-.then(([user, cardList])=>{
-  userInfo.setUserInfo(user.name, user.about)
-    userInfo.setUserAvatar(user.avatar)
-    userId = user._id
-    renderInitialCards(cardList)
-})
-.catch((error) =>{
-  console.log(error)
- })
-
 const section = new Section(
-    {
-    renderer: (item) => {
-      const cardElement = renderCard(item)
-      section.addItem(cardElement)
-    },
+  {
+  renderer: (item) => {
+    const cardElement = renderCard(item)
+    section.addItem(cardElement)
   },
-  ".elements__list")
+},
+".elements__list")
 
 const renderInitialCards = (cards) =>{
-  section.renderItems(cards)
+section.renderItems(cards)
 }
 
 const renderCard = (item) => {                                       //отрисовка
@@ -74,42 +63,58 @@ const renderCard = (item) => {                                       //отри�
  handleCardLike: (id) => {
   newCard.testExistencelike()
 
-  ? api.handleDeleteLike(id)
+  ? api
+      .deleteLike(id)
       .then((res) =>{
         newCard.setLikes(res.likes)
       })
-      .catch((error)=> {console.log(error)})
+      .catch((error)=> {
+        console.log(error)
+      })
 
-  : api.handleLikeCard(id)
+  : api
+       .addLike(id)
        .then((res) =>{
         newCard.setLikes(res.likes)
       })
       .catch((error)=> {console.log(error)})
  },
- handleCardDelete: (id,card) => {
-  PopupWithSubmit.open(id, card)
+ handleCardDeleteBtn: (id,card) => {
+  popupWithSubmit.open(id, card)
  },
 })
 
 return newCard.createCard();
 }
 
+Promise.all([api.getUserInfo(), api.getInitialCards()])           //обработка данных пользователя, затем карточек
+.then(([user, cardList])=>{
+    userInfo.setUserInfo(user.name, user.about)
+    userInfo.setUserAvatar(user.avatar)
+    userId = user._id
+    renderInitialCards(cardList)
+})
+.catch((error) =>{
+  console.log(error)
+ })
+
 const addNewCard = (card) => {                                      //новая карточка добавление
   popupCardAddForm.submitingBtn('Сохранение...')
-  api.addNewCard (card.name, card.link)
+  api
+     .addNewCard (card.name, card.link)
      .then((item) => {
       const cardElement = renderCard(item)
       section.prependAddItem(cardElement)
       popupCardAddForm.close()
      })
-     .catch((error)=> {console.log(error)})
+     .catch((error)=> {
+      console.log(error)})
      .finally(popupCardAddForm.submitingBtn('Создать'))
 }
 
-const popupWithSubmit = new PopupWithSubmit('.popup_delete-card', (id, card) =>handleDeleteCard(id,card))
-
-const handleDeleteCard = (id, card) =>{                            //удалить картоки по id
-  api.deleteCard(id, card)
+const handelCardDelete = (id, card) =>{                            //удалить картоки по id
+  api
+     .deleteCard(id, card)
      .then((res)=> {
       popupWithSubmit.deleteCard(res.card)
       popupWithSubmit.close()
@@ -118,13 +123,8 @@ const handleDeleteCard = (id, card) =>{                            //удали�
       console.log(error)
      })
 }
-
+const popupWithSubmit = new PopupWithSubmit('#popup-delete-card', (id, card) => handelCardDelete(id,card))
 popupWithSubmit.setEventListeners();
-
-const editAvatarPopup = new PopupWithForm(
-  popupEditAvatar,
-  handleAvatarEdit,
-)
 
 const handleAvatarEdit = () => {
   editAvatarPopup.submitingBtn('Сохранение...')
@@ -140,11 +140,10 @@ const handleAvatarEdit = () => {
     .finally(editAvatarPopup.submitingBtn('Сохранить'))
 }
 
-editAvatarPopup.setEventListeners()
-
 const handleProfileFormSubmit = (item) => {
   popupProfileEditForm.submitingBtn('Сохранение...')
-  api.setInfo(item.name, res.info)
+  api
+     .setInfo(item.name, res.info)
      .then((res)=>{
       userInfo.setUserInfo(res.name, res.about)
       popupProfileEditForm.close()
@@ -154,17 +153,22 @@ const handleProfileFormSubmit = (item) => {
     })
     .finally(popupProfileEditForm.submitingBtn('Сохранить'))
 }
+const editAvatarPopup = new PopupWithForm(
+  popupEditAvatarSelector,
+  handleAvatarEdit,
+)
+editAvatarPopup.setEventListeners()
 
 const userInfo = new UserInfo ({
   userNameSelector: '.profile__user',
   userInfoSelector: '.profile__discription',
-  avatarInfoSelector: '.profile__avatar'
+  userAvatarSelector: '.profile__avatar'
 });
 
-const popupProfileEditForm = new PopupWithForm (".popup_profile-edit", handleProfileFormSubmit)
+const popupProfileEditForm = new PopupWithForm ("#popup-profile-edit", handleProfileFormSubmit)
 popupProfileEditForm.setEventListeners()
 
-const popupCardAddForm = new PopupWithForm (".popup_card-add", addNewCard)
+const popupCardAddForm = new PopupWithForm ("#popup-card-add", addNewCard)
 popupCardAddForm.setEventListeners()
 
 // Событие клика на редактирование профиля
@@ -187,7 +191,7 @@ avatarEditButton.addEventListener('click',() =>{
   editAvatarPopup.open()
 })
 
-const popupZoomImage = new PopupWithImage(".popup_image-zoom")
+const popupZoomImage = new PopupWithImage("#popup-image-zoom")
 popupZoomImage.setEventListeners()
 
 // класс валидации

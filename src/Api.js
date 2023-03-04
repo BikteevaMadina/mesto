@@ -1,7 +1,7 @@
 export default class Api {
-  constructor(сomponents) {
-    this._baseUrl = сomponents._baseUrl;
-    this._headers = сomponents._headers;
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;
+    this._headers = headers;
   }
 
   _checkResult(res) {
@@ -18,7 +18,7 @@ export default class Api {
   }
 
   addNewCard(name, link) {                      // добавление карточки методом POST
-    return fetch(`${this._baseUrl}`,{
+    return fetch(`${this._baseUrl}/cards`,{
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -28,35 +28,37 @@ export default class Api {
     }).then((res) =>this._checkResult(res))
   }
 
-  likeCard(cardId) {                              // поставить лайк
-    return  fetch(`${this._baseUrl}/card/${cardId}/likes`,{
-      method: 'PUT',
-      headers: this._headers,
-  }).then((res) =>this._checkResult(res))
-  }
-
-  deletLikeCard(cardId) {                        // удаление лайк
-  return  fetch(`${this._baseUrl}/card/${cardId}/likes`, {
-    method: 'DELETE',
-    headers: this._headers,
-  }).then((res) =>this._checkResult(res))
-}
-
   deleteCard(cardId) {                           // удаление карточки
-    return  fetch(`${this._baseUrl}/card/${cardId}`, {
+    return  fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
   }).then((res) =>this._checkResult(res))
 }
 
-  getUserInfo() {                               // получение информации пользователя
-    return fetch(`${this._baseUrl}/users/me`, { //   методом GET
+addLike(id) {                              // поставить лайк
+    return  fetch(`${this._baseUrl}/cards/${id}/likes/`,{
+      method: 'PUT',
       headers: this._headers,
-    }).then((res) =>this._checkResult(res))
+  }).then((res) =>this._checkResult(res))
   }
 
-  setInfo(name, info) {                   // изменение информации пользователя
-    return fetch(`${this._baseUrl}/users/me`,{ // методом PATCH
+  deleteLike(id) {                        // удаление лайк
+  return  fetch(`${this._baseUrl}/cards/${id}/likes/`, {
+    method: 'DELETE',
+    headers: this._headers,
+  }).then((res) =>this._checkResult(res))
+}
+
+
+  getUserInfo() {                               // получение информации пользователя
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: this._headers,
+    })
+    .then((res) =>this._checkResult(res))
+  }
+
+  setInfo(name, info) {                          // изменение информации пользователя
+    return fetch(`${this._baseUrl}/users/me`,{  // методом PATCH
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -66,12 +68,12 @@ export default class Api {
     }).then((res) =>this._checkResult(res))
   }
 
-  setAvatar(newImgLink) {                            // изменение аватара пользователя
+  setAvatar(url) {                            // изменение аватара пользователя
     return fetch(`${this._baseUrl}/users/me/avatar`,{ // методом PATCH
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
-        avatar: newImgLink
+        avatar: url,
       }),
     }).then((res) =>this._checkResult(res))
   }

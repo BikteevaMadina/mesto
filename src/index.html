@@ -14,14 +14,14 @@
     <main class="content">
         <section class="profile">
           <button class="profile__button-edit-avatar" title="Редактировать аватар">
-            <img class="profile__avatar" src="<%=require('./pictures/avatar.jpg')%>" alt="Фотография профиля">
+            <img class="profile__avatar" src="#" alt="Фотография профиля">
           </button>
             <div class="profile__info">
                 <div class="profile__name">
-                  <h1 class="profile__user">Жак&#8209;Ив&nbsp;Кусто</h1>
+                  <h1 class="profile__user"></h1>
                   <button class="profile__button-edit" type="button" title="Редактирвание"></button>
                 </div>
-                <p class="profile__discription">Исследователь океана</p>
+                <p class="profile__discription"></p>
             </div>
             <button class="profile__button-add" type="button" title="Новый пост"></button>
         </section>
@@ -43,7 +43,7 @@
           <h2 class="elements__title"></h2>
           <div class="elements__like-discription">
           <button class="elements__like" type="button" title="Нравится"></button>
-          <p class="elements__like-quantity" title="Количество лайков">0</p>
+          <p class="elements__like-quantity" title="Количество лайков"></p>
         </div>
       </div>
       <button class="elements__delete" type="button" title="Удалить"></button>
@@ -52,7 +52,7 @@
 
 <!-- редактирование профиля -->
 
-    <section class="popup popup_profile-edit">
+    <section class="popup" id="popup-profile-edit">
         <div class="popup__container">
             <button class="popup__button-close" type="button"></button>
             <form class="popup__form" id="form-profile-edit"
@@ -76,7 +76,7 @@
 
 <!-- добавление новой карточки -->
 
-    <section class="popup popup_card-add">
+    <section class="popup" id="popup-card-add">
       <div class="popup__container">
         <button class="popup__button-close" type="button"></button>
         <form class="popup__form" id="form-cards-add" name="card-form" novalidate>
@@ -102,7 +102,7 @@
 
 <!-- просмотр картинки -->
 
-    <section class="popup popup_image-zoom popup_image_bg">
+    <section class="popup  popup_image_bg" id="popup-image-zoom">
       <div class="popup__image-block">
         <button class="popup__button-close" type="button" >
         </button>
@@ -114,7 +114,7 @@
     </section>
 
     <!-- подтверждение удаления карточки -->
-    <section class="popup popup_delete-card">
+    <section class="popup popup__delete-card" id="popup-delete-card">
       <div class="popup__container popup__container_small_size">
         <button class="popup__button-close" type="button"></button>
         <h2 class="popup__title">Вы уверены?</h2>
@@ -124,18 +124,18 @@
 
 <!-- редактирование аватара -->
 
-    <section class="popup popup-avatar-edit">
+    <section class="popup" id="popup-avatar-edit">
       <div class="popup__container">
         <button class="popup__button-close"></button>
         <h2 class="popup__title">Обновить аватар</h2>
-        <form class="popup__form" id="form-avatar-edit" name="card-form" novalidate>
+        <form class="popup__form" id="form-avatar-edit" novalidate>
           <label class="popup__label">
             <input class="popup__input popup__input_post_activity link popup__input_link"
                    type="url" id="link" name="link"
                   placeholder="Ссылка на картинку" required>
             <span class="popup__error link-avatar-error" id="link-avatar-error"></span>
           </label>
-          <button class="popup__submit" id="popup__submit-avatar" type="submit" value="Создать" >
+          <button class="popup__submit" id="popup__submit-avatar" type="submit" value="Сохранить" >
             Сохранить
           </button>
         </form>
@@ -145,3 +145,5 @@
 
 </body>
 </html>
+
+

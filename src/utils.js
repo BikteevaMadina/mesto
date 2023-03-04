@@ -26,9 +26,9 @@
 // ];
 
 // Объявление переменных popup
-export const popupProfileEdit = document.querySelector(".popup_profile-edit");
-export const popupCardAdd = document.querySelector(".popup_card-add");
-export const popupImageSelector = document.querySelector(".popup_image-zoom");
+export const popupProfileEdit = document.querySelector("#popup-profile-edit");
+export const popupCardAdd = document.querySelector("#popup-card-add");
+export const popupImageSelector = document.querySelector("#popup-image-zoom");
 
 // Переменные открытия и закрытия popup
 
@@ -53,21 +53,21 @@ export const formCardLink = document.querySelector(".link");
 export const profileUserName = document.querySelector(".profile__user");
 export const profileDiscription = document.querySelector(".profile__discription");
 export const profileAvatar = document.querySelector('.profile__avatar');
-export const popupDeleteCard = document.querySelector('.popup_delete-card');
-export const popupEditAvatar = document.querySelector('.popup-avatar-edit')
+export const popupDeleteCard = document.querySelector('#popup-delete-card');
+export const popupEditAvatarSelector = document.querySelector('#popup-avatar-edit')
 
 // Находим форму в DOM
 
 // Находим поля формы в DOM
 export const inputPostName = document.querySelector(".popup__input_post_name");
 export const inputPostActivity = document.querySelector(".popup__input_post_activity");
-export const popupLinkAvatar = document.querySelector('.popup__input_link')
+export const popupLinkAvatar = popupEditAvatarSelector.querySelector('.popup__input_link')
 export const popupImage = document.querySelector(".popup__image");
 export const popupImageCaption = document.querySelector(".popup__image-caption");
 
 export const cardAddForm = popupCardAdd.querySelector('.popup__form');
 export const profileEditForm = popupProfileEdit.querySelector('.popup__form');
-export const avatarEditForm = popupEditAvatar.querySelector('.popup__form');
+export const avatarEditForm = popupEditAvatarSelector.querySelector('#form-avatar-edit');
 export const avatarEditButton = document.querySelector('.profile__button-edit-avatar')
 
 export const validationConfig = {
@@ -78,4 +78,5 @@ export const validationConfig = {
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__error_visible",
 };
+
 
