@@ -1,12 +1,12 @@
 import './pages/index.css';
 
-import { UserInfo } from './UserInfo.js';
-import { Card } from './Card.js';
-import { FormValidator } from './FormValidator.js';
-import Section from './Section.js';
-import Api from './Api.js';
-import { PopupWithImage } from './PopupWithImage.js';
-import { PopupWithForm } from './PopupWithForm.js';
+import { UserInfo } from './components/UserInfo.js';
+import { Card } from './components/Card.js';
+import { FormValidator } from './components/FormValidator.js';
+import Section from './components/Section.js';
+import Api from './components/Api.js';
+import { PopupWithImage } from './components/PopupWithImage.js';
+import { PopupWithForm } from './components/PopupWithForm.js';
 
 import {
   cardAddForm,
@@ -30,8 +30,8 @@ import {
   popupDeleteCard,
   popupLinkAvatar,
   validationConfig
-} from './utils.js';
-import {PopupWithSubmit} from './PopupWithSubmit.js';
+} from './components/utils.js';
+import {PopupWithSubmit} from './components/PopupWithSubmit.js';
 
 
 const api = new Api({
