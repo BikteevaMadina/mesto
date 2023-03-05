@@ -42,7 +42,7 @@ export const profileBtnAdd = document.querySelector(".profile__button-add");
 //Переменные для карточек
 export const cardBtnSubmit = popupCardAdd.querySelector('#popup__submit-add');
 export const elementsListContainer = document.querySelector(".elements__list");
-export const elementsTemplate = "#elements-template";
+export const elementsTemplate = document.querySelector('#elements-template')
 
 export const formCardName = document.querySelector(".name");
 export const formCardLink = document.querySelector(".link");

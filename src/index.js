@@ -15,6 +15,7 @@ import {initialCards,
   popupProfileEdit,
   profileAvatar,
   profileUserSelector,
+  elementsTemplate,
   popupCardAdd,
   popupImageSelector,
   profileBtnEdit,
@@ -55,7 +56,7 @@ section.renderItems(cards)
 }
 
 const renderCard = (item) => {                                       //отрисовка
-  const newCard = new Card(item,userId, '#elements-template', {
+  const newCard = new Card(item,'#elements-template',userId, {
    handleCardClick : (name, link) => {
     popupZoomImage.open(name, link)
       },
