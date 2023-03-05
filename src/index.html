@@ -60,17 +60,17 @@
                   action="#" method="post"
                   name="profile-form" novalidate>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <label class="popup__label" for="post-name">
+                <label class="popup__label" for="name">
                     <input class="popup__input popup__input_post_name"
-                    placeholder="Ваше имя" id="post-name" type="text" name="post-name" maxlength="40" minlength="2" required>
+                    placeholder="Ваше имя" id="post-name" type="text" name="name" maxlength="40" minlength="2" required>
                     <span class="popup__error post-name-error" id="post-name-error"></span>
                 </label>
-                <label class="popup__label" for="post-activity">
+                <label class="popup__label" for="info">
                     <input class="popup__input popup__input_post_activity" placeholder="Область деятельности"
-                    id="post-activity" type="text" name="post-activity" maxlength="200" minlength="2" required>
+                    id="post-activity" type="text" name="info" maxlength="200" minlength="2" required>
                     <span id="post-activity-error" class="popup__error post-activity-error"></span>
                 </label>
-                <button class="popup__submit" type="submit">Сохранить</button>
+                <input class="popup__submit" type="submit" value="Сохранить" >
             </form>
         </div>
     </section>
@@ -95,9 +95,7 @@
                   placeholder="Ссылка на картинку" required>
             <span class="popup__error link-error" id="link-error"></span>
           </label>
-          <button class="popup__submit" id="popup__submit-add" type="submit" value="Создать" >
-            Создать
-          </button>
+          <input class="popup__submit" id="popup__submit-add" type="submit" value="Создать" >
         </form>
       </div>
     </section>
@@ -139,7 +137,7 @@
                    type="url" id="link" name="link"
                   placeholder="Ссылка на картинку" required>
             <span class="popup__error link-error" id="link-avatar-error"></span>
-          <button class="popup__submit" id="popup__submit-avatar" type="submit" value="Сохранить">Сохранить</button>
+          <input class="popup__submit" id="popup__submit-avatar" type="submit" value="Сохранить">
         </form>
       </div>
     </section>

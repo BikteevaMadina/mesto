@@ -65,7 +65,6 @@ const renderCard = (item) => {                                       //отри�
 
  handleCardLike: (id) => {
   newCard.testExistenceLike()
-
   ? api
       .deleteLike(id)
       .then((res) =>{
@@ -147,7 +146,7 @@ const handleAvatarEdit = () => {
 const handleProfileFormSubmit = (item) => {
   popupProfileEditForm.submitingBtn('Сохранение...')
   api
-     .setInfo(item.name, res.info)
+     .setInfo(item.name, item.info)
      .then((res)=>{
       userInfo.setUserInfo(res.name, res.about)
       popupProfileEditForm.close()
@@ -163,7 +162,11 @@ const editAvatarPopup = new PopupWithForm(
 )
 editAvatarPopup.setEventListeners()
 
-const userInfo = new UserInfo (profileUserSelector);
+const userInfo = new UserInfo({
+  userNameSelector: '.profile__user',
+  userInfoSelector: '.profile__discription',
+  userAvatarSelector: '.profile__avatar'
+})
 
 const popupProfileEditForm = new PopupWithForm ('#popup-profile-edit', handleProfileFormSubmit)
 popupProfileEditForm.setEventListeners()

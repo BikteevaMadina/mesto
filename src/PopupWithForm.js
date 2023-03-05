@@ -4,12 +4,10 @@ export class PopupWithForm extends Popup {
   constructor(popupSelector, handelFormSubmit) {
     super(popupSelector)
 
-    this._handelFormSubmit = handelFormSubmit
-    this._formElement = this._popupElement.querySelector('.popup__form')
-  
-    this._inputList = this._formElement.querySelectorAll('.popup__input')
-    this._submitBtn = this._formElement.querySelector('.popup__submit')
-
+    this._handelFormSubmit = handelFormSubmit;
+    this._formElement = this._popupElement.querySelector('.popup__form');
+    this._inputList = this._formElement.querySelectorAll('.popup__input');
+    this._submitBtn = this._formElement.querySelector('.popup__submit');
   }
 
   submitingBtn(text) {
@@ -36,7 +34,7 @@ export class PopupWithForm extends Popup {
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault()
       this._handelFormSubmit(this._getInputValues())
-     // this.close()
+
     })
   }
   close() {

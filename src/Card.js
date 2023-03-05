@@ -23,12 +23,13 @@ export class Card {
     this._likes = data.likes;
     this._handleCardLike = handleCardLike;
     this._handleCardDeleteBtn = handleCardDeleteBtn;
+
   }
 
   createCard() {
     this._cardName.textContent = this._name;
     this._cardLink.src = this._link;
-    this._newCard.alt = this._name;
+    this._cardLink.alt = this._name;
     this._likesQuantity.textContent = this._likes.length;
     if (this._ownerId !== this._userId) {
       this._deleteCardBtn.style.display = "none";
@@ -44,15 +45,16 @@ export class Card {
   //проверка наличия лайков
   testExistenceLike() {
     return this._likes.find((like) => {
-      return like._id === this._userId;
-    });
+      return like._id === this._userId
+    })
   }
 
   toggleLike() {
     if (this.testExistenceLike()) {
       this._addLike()
+      console.log( this._addLike())
     } else {
-      this._deletLike()
+      this._deleteLike()
     }
   }
 
@@ -64,11 +66,12 @@ export class Card {
   }
 
   _addLike() {
-    this._likeCardBtn.classList.add("elements__like_active"); // поставить лайк
+    this._likeCardBtn.classList.add('elements__like_active'); // поставить лайк
+
   }
 
-  _deletLike = () => {
-    this._likeCardBtn.classList.remove("element__like_active"); //убрать лайк
+  _deleteLike = () => {
+    this._likeCardBtn.classList.remove('elements__like_active'); //убрать лайк
   };
 
   //получить id
@@ -87,8 +90,10 @@ export class Card {
 
   _setEventListeners = () => {
     this._likeCardBtn.addEventListener("click", () => {
-      this.toggleLike();
+
       this._handleCardLike(this._cardId);
+
+      this.toggleLike();
     });
     this._cardLink.addEventListener("click", () => {
       this._handleCardClick(this._name, this._link);
