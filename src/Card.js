@@ -50,9 +50,9 @@ export class Card {
 
   toggleLike() {
     if (this.testExistenceLike()) {
-      this._addLike();
+      this._addLike()
     } else {
-      this._deletLike();
+      this._deletLike()
     }
   }
 

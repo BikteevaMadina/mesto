@@ -8,7 +8,7 @@ import Api from './Api.js';
 import { PopupWithImage } from './PopupWithImage.js';
 import { PopupWithForm } from './PopupWithForm.js';
 
-import {initialCards,
+import {
   cardAddForm,
   profileEditForm,
   avatarEditForm,
