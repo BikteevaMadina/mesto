@@ -71,14 +71,6 @@ export const profileEditForm = popupProfileEdit.querySelector('.popup__form');
 
 
 
-export const profileUserSelector = {
-  userNameSelector: '.profile__user',
-  userInfoSelector: '.profile__discription',
-  userAvatarSelector: '.profile__avatar'
-}
-export const profileUserName = document.querySelector(profileUserSelector.userNameSelector);
-export const profileDiscription = document.querySelector(profileUserSelector.userInfoSelector);
-export const profileAvatar = document.querySelector(profileUserSelector.userAvatarSelector);
 
 export const validationConfig = {
   formSelector: ".popup__form",

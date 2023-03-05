@@ -13,7 +13,7 @@ export class FormValidator {
   }
 
 _showInputError (inputElement, errorMessage) {
-  const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+  const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
 
   errorElement.classList.add(this._validationConfig.errorClass);
   errorElement.textContent = errorMessage;
@@ -30,7 +30,7 @@ resetValidation = () => {
 }
 
 _hideInputError = (inputElement) => {
-  const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+  const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove(this._validationConfig.inputErrorClass);
   errorElement.classList.remove(this._validationConfig.errorClass);
   errorElement.textContent = '';

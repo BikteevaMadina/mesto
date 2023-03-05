@@ -5,77 +5,84 @@ export default class Api {
   }
 
   _checkResult(res) {
-    if(res.ok) {
+    if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Ошибка: ${res.status}`)
+    return Promise.reject(`Ошибка: ${res.status}`);
   }
 
-  getInitialCards() {                           // получение карточек методом GET
+  getInitialCards() {
+    // получение карточек методом GET
     return fetch(`${this._baseUrl}/cards`, {
       headers: this._headers,
-    }).then((res) =>this._checkResult(res))
+    }).then((res) => this._checkResult(res));
   }
 
-  addNewCard(name, link) {                      // добавление карточки методом POST
-    return fetch(`${this._baseUrl}/cards`,{
-      method: 'POST',
+  addNewCard(name, link) {
+    // добавление карточки методом POST
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
       headers: this._headers,
       body: JSON.stringify({
         name: name,
-        link: link
-      })
-    }).then((res) =>this._checkResult(res))
+        link: link,
+      }),
+    }).then((res) => this._checkResult(res));
   }
 
-  deleteCard(cardId) {                           // удаление карточки
-    return  fetch(`${this._baseUrl}/cards/${cardId}`, {
-      method: 'DELETE',
+  deleteCard(cardId) {
+    // удаление карточки
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
       headers: this._headers,
-  }).then((res) =>this._checkResult(res))
-}
-
-addLike(id) {                              // поставить лайк
-    return  fetch(`${this._baseUrl}/cards/${id}/likes/`,{
-      method: 'PUT',
-      headers: this._headers,
-  }).then((res) =>this._checkResult(res))
+    }).then((res) => this._checkResult(res));
   }
 
-  deleteLike(id) {                        // удаление лайк
-  return  fetch(`${this._baseUrl}/cards/${id}/likes/`, {
-    method: 'DELETE',
-    headers: this._headers,
-  }).then((res) =>this._checkResult(res))
-}
+  addLike(id) {
+    // поставить лайк
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then((res) => this._checkResult(res));
+  }
 
+  deleteLike(id) {
+    // удаление лайк
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then((res) => this._checkResult(res));
+  }
 
-  getUserInfo() {                               // получение информации пользователя
+  getUserInfo() {
+    // получение информации пользователя
     return fetch(`${this._baseUrl}/users/me`, {
       headers: this._headers,
-    })
-    .then((res) =>this._checkResult(res))
+    }).then((res) => this._checkResult(res));
   }
 
-  setInfo(name, info) {                          // изменение информации пользователя
-    return fetch(`${this._baseUrl}/users/me`,{  // методом PATCH
-      method: 'PATCH',
+  setInfo(name, info) {
+    // изменение информации пользователя
+    return fetch(`${this._baseUrl}/users/me`, {
+      // методом PATCH
+      method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name: name,
-        about: info
+        about: info,
       }),
-    }).then((res) =>this._checkResult(res))
+    }).then((res) => this._checkResult(res));
   }
 
-  setAvatar(url) {                            // изменение аватара пользователя
-    return fetch(`${this._baseUrl}/users/me/avatar`,{ // методом PATCH
-      method: 'PATCH',
+  setAvatar(url) {
+    // изменение аватара пользователя
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      // методом PATCH
+      method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         avatar: url,
       }),
-    }).then((res) =>this._checkResult(res))
+    }).then((res) => this._checkResult(res));
   }
- }
-
+}
