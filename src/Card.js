@@ -50,14 +50,10 @@ export class Card {
   }
 
   toggleLike() {
-    if (this.testExistenceLike()) {
-      this._addLike()
-      console.log( this._addLike())
-    } else {
-      this._deleteLike()
-    }
+    this._likeCardBtn.classList.toggle('elements__like_active');
   }
 
+  
   //установить лайки
   setLikes(likesList) {
     this._Likes = likesList;
@@ -65,19 +61,20 @@ export class Card {
     this.toggleLike();
   }
 
-  _addLike() {
-    this._likeCardBtn.classList.add('elements__like_active'); // поставить лайк
-
-  }
-
-  _deleteLike = () => {
-    this._likeCardBtn.classList.remove('elements__like_active'); //убрать лайк
-  };
-
   //получить id
   getIdCard() {
     return this._cardId;
   }
+
+
+  // _addLike() {
+  //   this._likeCardBtn.classList.add('elements__like_active'); // поставить лайк
+
+  // }
+
+  // _deleteLike = () => {
+  //   this._likeCardBtn.classList.remove('elements__like_active'); //убрать лайк
+  // };
 
   _getTemplate() {
     const newCard = document
@@ -93,7 +90,7 @@ export class Card {
 
       this._handleCardLike(this._cardId);
 
-      this.toggleLike();
+      //this.toggleLike();
     });
     this._cardLink.addEventListener("click", () => {
       this._handleCardClick(this._name, this._link);
