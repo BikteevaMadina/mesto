@@ -1,18 +1,20 @@
 import './pages/index.css';
 
+import { UserInfo } from './UserInfo.js';
 import { Card } from './Card.js';
 import { FormValidator } from './FormValidator.js';
 import Section from './Section.js';
 import Api from './Api.js';
 import { PopupWithImage } from './PopupWithImage.js';
 import { PopupWithForm } from './PopupWithForm.js';
-import { UserInfo } from './UserInfo.js';
+
 import {initialCards,
   cardAddForm,
   profileEditForm,
   avatarEditForm,
   popupProfileEdit,
   profileAvatar,
+  profileUserSelector,
   popupCardAdd,
   popupImageSelector,
   profileBtnEdit,
@@ -29,16 +31,16 @@ import {initialCards,
   validationConfig
 } from './utils.js';
 import {PopupWithSubmit} from './PopupWithSubmit.js';
-let userId = null;
+
 
 const api = new Api({
   baseUrl:'https://mesto.nomoreparties.co/v1/cohort-60',
   headers: {
-    autorization: '99ec2b63-21d0-4a18-afc1-bc28f717f199',
-    'Content-Type': 'application/json'
+    authorization: '99ec2b63-21d0-4a18-afc1-bc28f717f199',
+    'Content-Type': 'application/json',
   }
 })
-
+let userId = null;
 const section = new Section(
   {
   renderer: (item) => {
@@ -53,7 +55,7 @@ section.renderItems(cards)
 }
 
 const renderCard = (item) => {                                       //отрисовка
-  const newCard = new Card(item, '#elements-template',userId, {
+  const newCard = new Card(item,userId, '#elements-template', {
    handleCardClick : (name, link) => {
     popupZoomImage.open(name, link)
       },
@@ -61,7 +63,7 @@ const renderCard = (item) => {                                       //отри�
  //return cardElement
 
  handleCardLike: (id) => {
-  newCard.testExistencelike()
+  newCard.testExistenceLike()
 
   ? api
       .deleteLike(id)
@@ -123,7 +125,8 @@ const handelCardDelete = (id, card) =>{                            //удали�
       console.log(error)
      })
 }
-const popupWithSubmit = new PopupWithSubmit('#popup-delete-card', (id, card) => handelCardDelete(id,card))
+const popupWithSubmit = new PopupWithSubmit('#popup-delete-card', (id, card) =>
+handelCardDelete(id,card),)
 popupWithSubmit.setEventListeners();
 
 const handleAvatarEdit = () => {
@@ -159,19 +162,17 @@ const editAvatarPopup = new PopupWithForm(
 )
 editAvatarPopup.setEventListeners()
 
-const userInfo = new UserInfo ({
-  userNameSelector: '.profile__user',
-  userInfoSelector: '.profile__discription',
-  userAvatarSelector: '.profile__avatar'
-});
+const userInfo = new UserInfo (profileUserSelector);
 
-const popupProfileEditForm = new PopupWithForm ("#popup-profile-edit", handleProfileFormSubmit)
+const popupProfileEditForm = new PopupWithForm ('#popup-profile-edit', handleProfileFormSubmit)
 popupProfileEditForm.setEventListeners()
 
-const popupCardAddForm = new PopupWithForm ("#popup-card-add", addNewCard)
+const popupCardAddForm = new PopupWithForm ('#popup-card-add', addNewCard)
 popupCardAddForm.setEventListeners()
 
 // Событие клика на редактирование профиля
+const popupZoomImage = new PopupWithImage(popupImageSelector)
+popupZoomImage.setEventListeners()
 
 profileBtnEdit.addEventListener("click",  () => {
 profileEditFormValidator.resetValidation()
@@ -191,13 +192,12 @@ avatarEditButton.addEventListener('click',() =>{
   editAvatarPopup.open()
 })
 
-const popupZoomImage = new PopupWithImage("#popup-image-zoom")
-popupZoomImage.setEventListeners()
 
 // класс валидации
 
 const cardAddFormValidator = new FormValidator(validationConfig, cardAddForm);
 const profileEditFormValidator = new FormValidator(validationConfig, profileEditForm);
+
 const avatarEditFormValidator = new FormValidator(validationConfig, avatarEditForm)
 avatarEditFormValidator.enableValidation()
 cardAddFormValidator.enableValidation();

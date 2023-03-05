@@ -53,14 +53,14 @@ export class Card {
   }
 
                                                                    //проверка наличия лайков
-  testExistencelike() {
+  testExistenceLike() {
     return this._likes.find((like) => {
       return like._id === this._userId;
     })
   }
 
   toggleLike() {
-    if(this.testExistencelike()){
+    if(this.testExistenceLike()){
       this._addLike();
     } else {
       this._deletLike();
@@ -80,6 +80,7 @@ getIdCard() {
 }
 
 _setEventListeners = () => {
+
   this._deleteCardBtn.addEventListener('click',()=> {this._handleCardDeleteBtn(this._cardId, this._newCard) });
   this._likeCardBtn.addEventListener('click', ()=> {
     this._handleCardLike(this._cardId)

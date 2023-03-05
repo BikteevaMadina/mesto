@@ -31,10 +31,9 @@ resetValidation = () => {
 
 _hideInputError = (inputElement) => {
   const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
-
+  inputElement.classList.remove(this._validationConfig.inputErrorClass);
   errorElement.classList.remove(this._validationConfig.errorClass);
   errorElement.textContent = '';
-  inputElement.classList.remove(this._validationConfig.inputErrorClass);
 }
 
 _checkInputValidity = (inputElement) => {
@@ -45,15 +44,21 @@ _checkInputValidity = (inputElement) => {
   }
 };
 
- toggleBtn () {
-  this._buttonSubmit.classList.add(this._validationConfig.inactiveButtonClass)
-  this._buttonSubmit.disabled = true;
-    }
+// toggleBtn= (on) => {
+//   if (on) {
+//     this._buttonSubmit.disabled = false;
+//     this._buttonSubmit.classList.remove(this._validationConfig.inactiveButtonClass);
+//       } else {
+//         this._buttonSubmit.disabled = true;
+//         this._buttonSubmit.classList.add(this._validationConfig.inactiveButtonClass);
+//       }
+//     }
 
   _toggleBtnSubmit = () => {
     if (this._hasInvalidInput(this._inputList)) {
-    this.toggleBtn()
-
+      // this.toggleBtn(this._buttonSubmit, this._validationConfig.inactiveButtonClass, false)
+      this._buttonSubmit.classList.add(this._validationConfig.inactiveButtonClass)
+      this._buttonSubmit.disabled = true;
     } else {
       // this.toggleBtn(this._buttonSubmit, this._validationConfig.inactiveButtonClass, true)
       this._buttonSubmit.classList.remove(this._validationConfig.inactiveButtonClass)

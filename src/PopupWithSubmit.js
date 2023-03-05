@@ -1,12 +1,13 @@
 import { Popup } from './Popup.js'
 
 export class PopupWithSubmit extends Popup {
-  constructor(popupSelector, handelCardDelete) {
+  constructor(popupSelector, handleCardDelete) {
     super(popupSelector)
-    this._handelCardDelete = handelCardDelete;
-    this._formElement = this._popupElement.querySelector('.popup__form');
-    this._submitBtn = this._formElement.querySelector('.popup__submit');
-    console.log(this._submitBtn)
+
+    this._handleCardDelete = handleCardDelete
+    this._formElement = this._popupElement.querySelector('.popup__form')
+    this._submitBtn = this._formElement.querySelector('.popup__submit')
+    
   }
 
   open(id, cardItem) {
@@ -18,7 +19,7 @@ export class PopupWithSubmit extends Popup {
   setEventListeners() {
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault()
-      this._handelCardDelete(this._id, this._card)
+      this._handleCardDelete(this._id, this._card)
     })
     super.setEventListeners()
   }
