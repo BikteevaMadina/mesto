@@ -126,10 +126,9 @@ const addNewCard = (card) => {
 
 const handelCardDelete = (id, card) => {
   //удалить картоки по id
-  api
-    .deleteCard(id, card)
+  api.deleteCard(id, card)
     .then((res) => {
-      popupWithSubmit.deleteCard(res.card);
+      card.deleteCard(res.card);
       popupWithSubmit.close();
     })
     .catch((error) => {

@@ -7,14 +7,15 @@ export class PopupWithSubmit extends Popup {
     this._handleCardDelete = handleCardDelete
     this._formElement = this._popupElement.querySelector('.popup__form')
     this._submitBtn = this._formElement.querySelector('.popup__submit')
-    
+
   }
 
-  open(id, cardItem) {
+  open(id, card) {
     super.open()
     this._id = id;
-    this._card = cardItem;
+    this._card = card;
   }
+
 
   setEventListeners() {
     this._formElement.addEventListener('submit', (evt) => {
@@ -24,7 +25,9 @@ export class PopupWithSubmit extends Popup {
     super.setEventListeners()
   }
 
-  deleteCard(){
-    this._card.remove();  // удаление
-  }
+  // deleteCard(){
+  //   this._card.remove();  // удаление
+
+
+  // }
 }
