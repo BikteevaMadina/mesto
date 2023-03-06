@@ -108,7 +108,8 @@ Promise.all([api.getUserInfo(), api.getInitialCards()]) //обработка д�
     console.log(error);
   });
 
-const addNewCard = (card) => {
+const popupCardAddForm = new PopupWithForm("#popup-card-add",
+{handelFormSubmit: (card) => {
   //новая карточка добавление
   popupCardAddForm.submitingBtn("Сохранение...");
   api
@@ -122,7 +123,11 @@ const addNewCard = (card) => {
       console.log(error);
     })
     .finally(setTimeout(() => popupCardAddForm.submitingBtn("Создать"), 100));
-};
+}
+})
+
+// const popupCardAddForm = new PopupWithForm("#popup-card-add", addNewCard);
+ popupCardAddForm.setEventListeners();
 
 const handelCardDelete = (id, card) => {
   //удалить картоки по id
@@ -142,7 +147,6 @@ popupWithSubmit.setEventListeners();
 
 const editAvatarPopup = new PopupWithForm(popupEditAvatarSelector,
   {handelFormSubmit: (src) => {
-    console.log(src)
   editAvatarPopup.submitingBtn("Сохранение...")
   api
     .setAvatar(src.link)
@@ -164,7 +168,8 @@ const editAvatarPopup = new PopupWithForm(popupEditAvatarSelector,
 editAvatarPopup.setEventListeners();
 
 
-const handleProfileFormSubmit = (item) => {
+const popupProfileEditForm = new PopupWithForm("#popup-profile-edit",
+{handelFormSubmit: (item) => {
   popupProfileEditForm.submitingBtn("Сохранение...");
   api
     .setInfo(item.name, item.info)
@@ -176,7 +181,16 @@ const handleProfileFormSubmit = (item) => {
       console.log(error);
     })
     .finally(setTimeout(()=> popupProfileEditForm.submitingBtn("Сохранить"), 100));
-};
+}
+})
+
+
+// const popupProfileEditForm = new PopupWithForm(
+//   "#popup-profile-edit",
+//   handleProfileFormSubmit
+// );
+ popupProfileEditForm.setEventListeners();
+
 
 
 const userInfo = new UserInfo({
@@ -185,14 +199,7 @@ const userInfo = new UserInfo({
   userAvatarSelector: ".profile__avatar",
 });
 
-const popupProfileEditForm = new PopupWithForm(
-  "#popup-profile-edit",
-  handleProfileFormSubmit
-);
-popupProfileEditForm.setEventListeners();
 
-const popupCardAddForm = new PopupWithForm("#popup-card-add", addNewCard);
-popupCardAddForm.setEventListeners();
 
 // Событие клика на редактирование профиля
 const popupZoomImage = new PopupWithImage(popupImageSelector);
