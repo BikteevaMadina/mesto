@@ -140,10 +140,12 @@ const popupWithSubmit = new PopupWithSubmit("#popup-delete-card", (id, card) =>
 );
 popupWithSubmit.setEventListeners();
 
-const handleAvatarEdit = () => {
-  editAvatarPopup.submitingBtn("Сохранение...");
+const editAvatarPopup = new PopupWithForm(popupEditAvatarSelector,
+  {handelFormSubmit: (src) => {
+    console.log(src)
+  editAvatarPopup.submitingBtn("Сохранение...")
   api
-    .setAvatar(popupLinkAvatar.value)
+    .setAvatar(src.link)
     .then((res) => {
       userInfo.setUserAvatar(res.avatar);
       editAvatarPopup.close();
@@ -152,7 +154,15 @@ const handleAvatarEdit = () => {
       console.log(error);
     })
     .finally(setTimeout(()=> editAvatarPopup.submitingBtn("Сохранить"), 100));
-};
+  }
+  });
+
+// const editAvatarPopup = new PopupWithForm(
+//   popupEditAvatarSelector,
+//   handleAvatarEdit
+// );
+editAvatarPopup.setEventListeners();
+
 
 const handleProfileFormSubmit = (item) => {
   popupProfileEditForm.submitingBtn("Сохранение...");
@@ -167,11 +177,7 @@ const handleProfileFormSubmit = (item) => {
     })
     .finally(setTimeout(()=> popupProfileEditForm.submitingBtn("Сохранить"), 100));
 };
-const editAvatarPopup = new PopupWithForm(
-  popupEditAvatarSelector,
-  handleAvatarEdit
-);
-editAvatarPopup.setEventListeners();
+
 
 const userInfo = new UserInfo({
   userNameSelector: ".profile__user",
