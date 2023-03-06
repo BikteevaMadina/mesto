@@ -1,7 +1,7 @@
 .profile__button-edit-avatar {
     background: rgba(0, 0, 0, 0.8);
     border: none;
-    background-image: url('../../../pictures/edit_avatar.svg');
+    background-image: url('../../../images/edit_avatar.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 26px;

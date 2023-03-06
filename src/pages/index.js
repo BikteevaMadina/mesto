@@ -1,12 +1,12 @@
-import "./pages/index.css";
+import "./index.css";
 
-import { UserInfo } from "./components/UserInfo.js";
-import { Card } from "./components/Card.js";
-import { FormValidator } from "./components/FormValidator.js";
-import Section from "./components/Section.js";
-import Api from "./components/Api.js";
-import { PopupWithImage } from "./components/PopupWithImage.js";
-import { PopupWithForm } from "./components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import Section from "../components/Section.js";
+import Api from "../components/Api.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
 import {
   cardAddForm,
   profileEditForm,
@@ -29,8 +29,8 @@ import {
   popupDeleteCard,
   popupLinkAvatar,
   validationConfig,
-} from "./components/utils.js";
-import { PopupWithSubmit } from "./components/PopupWithSubmit.js";
+} from "../utils.js";
+import { PopupWithSubmit } from "../components/PopupWithSubmit.js";
 
 const api = new Api({
   baseUrl: "https://mesto.nomoreparties.co/v1/cohort-60",
@@ -121,7 +121,7 @@ const addNewCard = (card) => {
     .catch((error) => {
       console.log(error);
     })
-    .finally(popupCardAddForm.submitingBtn("Создать"));
+    .finally(setTimeout(() => popupCardAddForm.submitingBtn("Создать"), 100));
 };
 
 const handelCardDelete = (id, card) => {
@@ -132,7 +132,7 @@ const handelCardDelete = (id, card) => {
       popupWithSubmit.close();
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error); handelFormSubmit
     });
 };
 const popupWithSubmit = new PopupWithSubmit("#popup-delete-card", (id, card) =>
@@ -151,7 +151,7 @@ const handleAvatarEdit = () => {
     .catch((error) => {
       console.log(error);
     })
-    .finally(editAvatarPopup.submitingBtn("Сохранить"));
+    .finally(setTimeout(()=> editAvatarPopup.submitingBtn("Сохранить"), 100));
 };
 
 const handleProfileFormSubmit = (item) => {
@@ -165,7 +165,7 @@ const handleProfileFormSubmit = (item) => {
     .catch((error) => {
       console.log(error);
     })
-    .finally(popupProfileEditForm.submitingBtn("Сохранить"));
+    .finally(setTimeout(()=> popupProfileEditForm.submitingBtn("Сохранить"), 100));
 };
 const editAvatarPopup = new PopupWithForm(
   popupEditAvatarSelector,
