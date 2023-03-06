@@ -29,7 +29,7 @@ import {
   popupDeleteCard,
   popupLinkAvatar,
   validationConfig,
-} from "../utils.js";
+} from "../utils/constants.js";
 import { PopupWithSubmit } from "../components/PopupWithSubmit.js";
 
 const api = new Api({
